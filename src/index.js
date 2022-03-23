@@ -4,9 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+/*
+var butter = require('buttercms')('039c7b814a0dd82b6b67f8846c7945ca7141c40a');
+butter.page.retrieve('*', 'Galery/index.js19-.01/él').then(response => console.log(response.data))
+*/
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
