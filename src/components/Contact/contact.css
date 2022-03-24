@@ -62,21 +62,6 @@ textarea{
     height: 10vh;
 }
 
-button{
-    border: none;
-    min-width: 200px ;
-    height: 6vh;
-    font-family: inherit;
-    color:#FFF;
-    background: #fd787e;
-    border: none;
-    transition: #fd787e 200ms ease-in, color 200ms ease-in;
-}
-
-button:hover{
-    background: #482380;
-    color:#fff;
-  }
 
 @media screen and (max-width: 1024px) {  
 }

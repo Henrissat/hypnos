@@ -1,0 +1,11 @@
+.logo_header{
+    position: absolute;
+    margin-top: 4vh;
+    margin-left: -80px;
+    right: 50vw;
+    left: 50vw;
+}
+
+.logo_hypnos{
+    width: 200px;
+}

@@ -14,6 +14,8 @@ export default function Layout({ children }) {
                 {children}
             </Main>
             <Footer />
+
+            
         </Wrapper>
     );
 };

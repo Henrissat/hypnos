@@ -1,20 +1,15 @@
 import styled from "styled-components";
 import { Link, useLocation } from 'react-router-dom';
-
-/*
-const buttonLeft = 100;
-const buttonright = 100;
-const buttonTrans = 'translate('+buttonLeft+'px, '+buttonright+'px)';
-var translateButton = {
-    transform: buttonTrans 
-   }
-*/
+import NavBar from './NavBar'
+import "./Header.css"
 
 export default function Header() {
     const location = useLocation();
     return(
         <Wrapper>
-            <Nav>
+            <NavBar />
+            <div className="logo_header"><img className="logo_hypnos" src="images/logo-hypnos.png"/></div>
+            {/*<Nav>
                 <Link to="/">
                     <MenuEl isCurrentPage={location.pathname === "/"}>
                         HomePage
@@ -31,12 +26,16 @@ export default function Header() {
                         Contact
                     </MenuEl>
                 </Link>
-            </Nav>
+            </Nav>*/}
         </Wrapper>
     );
 };
 
 const Wrapper = styled.header`
+    width: 100%;
+`;
+
+const Nav = styled.nav`
     display: flex;
     position: fixed;
     z-index: 100;
@@ -56,10 +55,6 @@ const Wrapper = styled.header`
     & a:first-child{
         margin-right: 16px;
     }
-`;
-
-const Nav = styled.nav`
-    display: flex;
 `;
 
 

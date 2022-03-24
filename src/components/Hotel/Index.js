@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
 import "./hotel.css";
-import Rooms from "./imgs";
+import Rooms from "./rooms";
 
 export default function Hotel() {
     return(
