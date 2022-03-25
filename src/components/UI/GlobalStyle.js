@@ -16,8 +16,19 @@ const GlobalStyle = createGlobalStyle`
     h2{
         font-size: 3rem;
     }
+    h3{
+        font-size: 2.8rem;
+    }
+    p{
+        letter-spacing: 1px;
+        line-height: 1.5rem;
+    }
     a{
         text-decoration: none;
+    }
+    input{
+        margin: 0;
+
     }
 `;
 

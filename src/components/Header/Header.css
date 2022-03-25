@@ -9,3 +9,10 @@
 .logo_hypnos{
     width: 200px;
 }
+
+@media screen and (max-width: 767px){
+    .logo_header{
+        margin-left: -100px;
+
+    }
+}

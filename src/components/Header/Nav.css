@@ -40,16 +40,16 @@
     display: block;
     padding: 0.9rem;
     font-size: 1.2vw;
-    color: #FFF;
     text-transform: uppercase;
+    color: #FFF;
 }
 
 .navbar_burger{
+    display: block;
+    position: fixed;
     z-index: 99;
     width: 40px;
     height: 40px;
-    position: fixed;
-    display: block;
     top: 1rem;
     left: 1rem;
     background: transparent;
@@ -165,8 +165,22 @@
     .navbar_link{
         font-size: 5vw;
     }
+
     .nav-on .navbar_links{
         width: 100vw;
+        top: 0px;
+    }
+
+    .burger_bar,
+    .burger_bar::before,
+    .burger_bar::after{
+        background: #FFF;
+    }
+    .bg_bar{
+        background-color: transparent;
+    }
+    .navbar_links{
+        margin-left: 0;
     }
 
 }
