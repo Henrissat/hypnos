@@ -14,7 +14,9 @@ export default function Home() {
         <Wrapper>
             <h1>Hotel de charme <br/>pour les amoureux</h1>
             <HeaderBg_home/>
+            {/* import de la barre de réservation */}
             <SearchBar />
+            {/* création en dynamique de la liste des hotels */}
             <div className="container-home">
                 <h2>Nos hôtels</h2>
                 <div className="container-hotels">
@@ -34,17 +36,25 @@ export default function Home() {
                 </div>
             </div>
             <div className="content-home">
-                <Apropos className="content-apropos"></Apropos>
-                <div className="container-txt">
-                    <h3>Bienvenue</h3>
-                    <img className="arabesque" src="images/arabesque.png" />
-                    <p>Hypnos est un groupe hôtelier fondé en 2004. Propriétaire de 7 établissements dans les quatre coins de l’hexagone, chacun de ces hôtels s’avère être une destination idéale pour les couples en quête d’un séjour romantique à deux.
-                    <br/>Chaque suite au design luxueux inclut des services hauts de gamme (un spa privatif notamment), de quoi plonger pleinement dans une atmosphère chic-romantique.</p>
-                    <a className="txt-link" href="#">En savoir plus</a>
+                <div className="container-apropos">
+                    <Apropos className="content-apropos"></Apropos>
+                    <div className="container-bienvenue">
+                            <h3>Bienvenue</h3>
+                            <img className="arabesque" src="images/arabesque.png" />
+                            <p>Hypnos est un groupe hôtelier fondé en 2004. Propriétaire de 7 établissements dans les quatre coins de l’hexagone, chacun de ces hôtels s’avère être une destination idéale pour les couples en quête d’un séjour romantique à deux.
+                            <br/>Chaque suite au design luxueux inclut des services hauts de gamme (un spa privatif notamment), de quoi plonger pleinement dans une atmosphère chic-romantique.</p>
+                            <a className="txt-link" href="#">En savoir plus</a>
+                    </div>
                 </div>
-                
+                <h3 className="spa-title">Spa</h3>
                 <div className="bloc-left">
-                    <h3>Spa</h3>
+                    <div className="container-spa">
+                        <h4>Espace détente et bien-être</h4>
+                        <p className="">
+                        Aux lignes épurées, le spa des Hypnos Hôtel***** & Spa est l’un des plus agréables de France. À votre disposition, une piscine, un bain à remous, un sauna et une salle de fitness.
+                        L’espace piscine, élégamment décoré, vous plongera dans une ambiance relaxante après une journée bien remplie à flâner. Profitez de ses 13 mètres de long, de sa nage à contrecourant et de son bain à remous.
+                        </p>
+                    </div>
                 </div>
             </div>
         </Wrapper>

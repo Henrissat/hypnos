@@ -13,6 +13,10 @@ h2{
   color: #bf912d;
 }
 
+h3{
+  color: #bf912d;
+}
+
 .headerBg{
   width: 100%;
   height: 100%;
@@ -78,34 +82,39 @@ figcaption{
 }
 
 .content-home{
+  position: relative;
   background-color: #eaecea;
 }
 
-.container-txt{
+.container-apropos{
   position: relative;
-  width: 700px;
-  z-index:5;
-  margin: 0 auto;
-  padding: 3rem;
-  text-align: center;
-  background-color: #292726;
-  color: #eaecea;
-  top: -350px;
-  transition-duration: 300ms;
-}
-
-.container-txt:hover{
-  box-shadow: 5px 10px 30px #000;
-  transform: scale(1.05);
 }
 
 .content-apropos{
+  position: relative;
   width: 100%;
   height: 550px;
   object-fit: cover;
   overflow: hidden;
   background-image: "images/basement-g619d6f8e7_1920.jpg" ;
   background-position: bottom;
+}
+
+.container-bienvenue{
+  position: absolute;
+  width: 700px;
+  z-index:5;
+  left: 28vw;
+  padding: 3rem;
+  background-color: #292726;
+  color: #eaecea;
+  bottom: -30px;
+  transition-duration: 300ms;
+}
+
+.container-bienvenue:hover{
+  box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.514);
+  transform: scale(1.05);
 }
 
 .arabesque{
@@ -118,67 +127,35 @@ figcaption{
   font-size: 1.1rem;
   top: 1rem;
 }
+.spa-title{
+  margin-top: 9vh;;
+}
 
-.search-bar{
+.bloc-left{
   position: relative;
-  display: flex;
-  z-index: 20;
-  max-width: 1000px;
-  top: -30px;
-  height: 53px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 1200px;
+  justify-content: center;
   margin: 0 auto;
-  background-color: #FFF;
-  border-radius: 4px;
-  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.322);
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
-.destination-search{
-  width: 270px;
-  background-color: transparent;
-  height: 53px;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-
-.search-date{
-  width: 270px;
-  height: 53px;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-
-.btn_travelSearch{
-  width: 200px;
-  height: 53px;
-  background-color: #bf912d;
-  color: #FFF;
-  border: none;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-
-.picto-search{
-  position: relative;
-  height: 20px;
-  top: 2px;
-  padding-left: 15px;
+.container-spa{
+  color: #292726;
+  text-align: left;
+  padding: 30px;
 }
 
 
 @media screen and (max-width: 767px){
-  .search-bar{
-    flex-direction: column;
-    height: 212px;
-    width: 70vw;
-  }
-  .destination-search{
+
+  .container-bienvenue{
+    position: relative;
     width: 100%;
-  }
-  .search-date{
-    width: 100%;
-  }
-  .btn_travelSearch{
-    width: 100%;
+    top: 0;
+    left: 0;
   }
 
 }

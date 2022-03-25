@@ -3,7 +3,6 @@ import styled from "styled-components";
 export default function Footer() {
     return(
         <Wrapper>
-            <Legal>Reproduction interdite | Mentions légales</Legal>
             <Mention>Copyright 2021 - Hypnos - Made by CreatiC</Mention>
         </Wrapper>
     );

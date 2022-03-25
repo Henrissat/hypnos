@@ -13,6 +13,9 @@ export default function NavBar() {
     console.log(openNav)
     return(
         <nav className={`navbar ${openNav ? "nav-on" : "nav-off"} `}>
+            <button className='navbar_burger' onClick={handleOpenNav}>
+                <span className='burger_bar'></span>
+            </button>
             <ul className="navbar_links">
                 <li>
                     <img className="logo-nav" src="images/picto-hypnos.png"/>
@@ -51,9 +54,6 @@ export default function NavBar() {
                     <a href="/" className="navbar_link">Spa</a>
                 </li>
             </ul>
-            <button className='navbar_burger' onClick={handleOpenNav}>
-                <span className='burger_bar'></span>
-            </button>
             <span className='bg_bar'>
             <ul className="sm_navbar">
                 <li><a href="#"><img className="sm_picto" src="images/picto-facebook.png"/></a></li>
