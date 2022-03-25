@@ -24,28 +24,28 @@ export default function NavBar() {
                     <a href="/" className="navbar_link">Accueil</a>
                 </li>
                 <li className="navbar_item slideEffect-2">
-                    <a href="/" className="navbar_link">Hypnos Annecy</a>
+                    <a href="/Hotel" className="navbar_link">Hypnos Annecy</a>
                 </li>
                 <li className="navbar_item slideEffect-2">
-                    <a href="/" className ="navbar_link">Hypnos Juan-les-Pins</a>
+                    <a href="/Hotel" className ="navbar_link">Hypnos Juan-les-Pins</a>
                 </li>
                 <li className="navbar_item slideEffect-3">
-                    <a href="/" className="navbar_link">Hypnos Chantilly</a>
+                    <a href="/Hotel" className="navbar_link">Hypnos Chantilly</a>
                 </li>
                 <li className="navbar_item slideEffect-4">
-                    <a href="/" className="navbar_link">Hypnos Biarritz</a>
+                    <a href="/Hotel" className="navbar_link">Hypnos Biarritz</a>
                 </li>
                 <li className="navbar_item slideEffect-5">
-                    <a href="/" className="navbar_link">Hypnos Aurillac</a>
+                    <a href="/Hotel" className="navbar_link">Hypnos Aurillac</a>
                 </li>
                 <li className="navbar_item slideEffect-6">
-                    <a href="/" className="navbar_link">Hypnos Caen</a>
+                    <a href="/Hotel" className="navbar_link">Hypnos Caen</a>
                 </li>
                 <li className="navbar_item slideEffect-7">
-                    <a href="/" className="navbar_link">Hypnos Strasbourg</a>
+                    <a href="/Hotel" className="navbar_link">Hypnos Strasbourg</a>
                 </li>
                 <li className="navbar_item slideEffect-8">
-                    <a href="/" className="navbar_link">Réservation</a>
+                    <a href="/reservation" className="navbar_link">Réservation</a>
                 </li>
                 <li className="navbar_item slideEffect-9">
                     <a href="/" className="navbar_link">Gallerie</a>

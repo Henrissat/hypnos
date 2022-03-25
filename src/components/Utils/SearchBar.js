@@ -1,10 +1,22 @@
 import "./searchBar.css"
-import listHotel from "./ListHotel";
+import listHotel from "../Home/ListHotel";
 
 export default function searchBar() {
+    /*state = {value: ""}
 
+    handledeparture = handledeparture.bind(value)
+    handleSubmit = handleSubmit.bind(value)
+
+    handleChange() { 
+        setState({value: target.value});  
+    }
+
+    handleSubmit() {
+        preventDefault();
+      }    
+    */
     return(
-        <div className="search-bar">
+        <form className="search-bar">
             <select className="destination-search" placeholder="Sélectionner une destination">
                 {listHotel.map(destination =>
                     <option value={destination.name} selected>{destination.name}</option> 
@@ -17,10 +29,7 @@ export default function searchBar() {
                     pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" 
                     title="yyyy-mm-dd" 
                     name="arrival" 
-                    on="change:AMP.setState({
-                        fields_arrival: true,
-                        fields_arrival_edited: true
-                    })"
+                    onChange="handlearrival"
                     />
             </div>
             <div class="hotel-date-end search-date">
@@ -30,16 +39,13 @@ export default function searchBar() {
                     pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" 
                     title="yyyy-mm-dd" 
                     name="departure" 
-                    on="change:AMP.setState({
-                        fields_departure: true,
-                        fields_departure_edited: true
-                    })"
+                    onChange="handledeparture"
             />
             </div>
-            <button className="btn_travelSearch">
+            <button type="submit" value="Réserver" className="btn_travelSearch">
                         Réserver
                         <img href="#" src="images/picto_search.png" className="picto-search"/>
             </button>
-        </div>
+        </form>
     )
 }

@@ -8,7 +8,7 @@ export default function Contact() {
             <HeaderBack />
             <h1>Contact</h1>
             <div className="forms-container">
-                <form name="contact" method="POST" data-netlify="true">
+                <form name="contact" method="POST" data-netlify="true" className="form-contact">
                     <div className="infos-cantin">
                         <a href="tel:+33650122859">06 50 12 28 59</a><br/>
                         <a href="mailto:">hypnos@gmail.com</a>

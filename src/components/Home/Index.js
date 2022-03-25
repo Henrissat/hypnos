@@ -22,9 +22,9 @@ export default function Home() {
                 <div className="container-hotels">
                     <div className="hotels-card">
                         {listHotel.map(item =>
-                        <a href={item.link} className="hotels-link">
-                            <div className="card-container" key={item.name}>
-                                <img className="hotel-img" src={item.src} />
+                        <a href={item.link} className="hotels-link" key={item.name}>
+                            <div className="card-container" >
+                                <img className="hotel-img" src={item.vignette} />
                                 <figcaption className="label-name" >
                                     <img className="picto_cardHypnos" src="images/picto-hypnos.png"/><br/>
                                     {item.name}

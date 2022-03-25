@@ -1,0 +1,43 @@
+.menuSecond {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  border-radius: 0.5em;
+  padding: 0.75em 1em;
+  background: var(--dark);
+  color: var(--white);
+  box-shadow: 2px 6px 20px rgb(127 129 138 / 80%);
+  &-items {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+  }
+  &-item {
+    padding: 0.5em 0.75em;
+    margin-right: 0.25em;
+    font-weight: 600;
+    font-size: 1em;
+    transition: color 0.06s linear;
+    user-select: none;
+    &:hover {
+      cursor: pointer;
+      color: var(--accent);
+    }
+    &--selected {
+      color: var(--accent);
+    }
+  }
+  &-dash {
+    height: 4px;
+    width: 40px;
+    border-radius: 2px;
+    background: var(--accent);
+    position: absolute;
+    bottom: 0;
+    transition: transform var(--duration), width 0.1s ease-in;
+  }
+}
+
+@media screen and (max-width: 767px){
+    
+}
