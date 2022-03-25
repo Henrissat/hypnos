@@ -10,7 +10,8 @@ export default function Hotel() {
     const ListHotels = `${url}/ListHotel`
     const [card, setCard] = useState([]);
 
-    console.log(card)
+    const starHotel = 5;
+
     return(
         <Wrapper>
             <h1>titre ici{listHotel.title}</h1>
@@ -30,7 +31,7 @@ export default function Hotel() {
                 {/* Infos hotel */}
                 <div className="blocInfo-hotel">
                     <p className="blocInfo-name">Hôtel Annecy palace</p>
-                    <p className="blocInfo-star"><img src="images/star.png" className="star"/></p>
+                    <p className="blocInfo-star"><span className="star">★</span></p>
                     <p className="blocInfo-adress"><img src="images/map-point.png" className="map-point"/>All. de l'Impérial, 74000 Annecy</p>
                 </div>
                 <h2>Nos chambres</h2>
@@ -38,13 +39,20 @@ export default function Hotel() {
                 <div className="container-hotels">
                     <div className="hotels-card">
                         {Rooms.map(item =>
-                        <a href={item.link} className="hotels-link" key={item.hotel}>
+                        <a href={item.link} className="rooms-link" key={item.rooms}>
                             <div className="card-container" >
-                                <img className="hotel-img" src={item.src} />
-                                <figcaption className="label-name" >
-                                    <img className="picto_cardHypnos" src="images/picto-hypnos.png"/><br/>
-                                    {item.name}
-                                </figcaption>
+                                <img className="rooms-img" src={item.src} />
+                                <img className="picto_cardHypnos-rooms" src="images/picto-hypnos.png"/><br/>
+                                <div style={{padding:"0 2rem"}}>
+                                    <p className="suite-txt">SUITE</p>
+                                    <p className="rooms-name">{item.shortDescription}</p>
+                                    <p className="rooms-description">{item.description}</p>
+                                    <p className="rooms-disponibilite">Seulement {item.nbr} chambres disponibles</p>
+                                    <p className="rooms-price">{item.price}</p>
+                                    <button className="button" href="#">
+                                        Réserver une chambre >
+                                    </button>
+                                </div>
                             </div>
                         </a>
                         )}
@@ -86,7 +94,7 @@ const HeaderBg_home = styled.div`
     z-index: -5;
     width: 100%;
     height: 80vh;
-    background-image: url("images/chandelier-g6f5a69dd7_1920.jpg"); no-repeat;
+    background-image: url("images/hotel-annecy.jpg"); no-repeat;
     background-position: center center;
     background-size: cover;
     filter: brightness(40%);

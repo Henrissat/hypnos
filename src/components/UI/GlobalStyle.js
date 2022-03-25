@@ -20,8 +20,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 2.8rem;
     }
     p{
-        letter-spacing: 1px;
-        line-height: 1.5rem;
+        line-height: 1.3rem;
     }
     a{
         text-decoration: none;
