@@ -10,8 +10,10 @@ export default function Hotel() {
     const ListHotels = `${url}/ListHotel`
     const [card, setCard] = useState([]);
 
-    const starHotel = 5;
+    const starHotel = [5];
+    //const star = "<span className="star">★</span>" x  starHotel
 
+    console.log(starHotel)
     return(
         <Wrapper>
             <h1>titre ici{listHotel.title}</h1>
