@@ -1,15 +1,53 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useParams} from "react-router-dom";
 import "./Home.css"
-import listHotel from "./ListHotel";
+import Hotel from "../Hotel/Index";
+//import listHotel from "./ListHotel";
 import SearchBar from "../Utils/SearchBar"
 
-export default function Home() {
-    const url = "http://localhost:1337";
-    const ListHotels = `${url}/ListHotel`
-    const [card, setCard] = useState([]);
+export default function Home({useHotel}) {
+    //const urlHotel = "http://127.0.0.1/api/";
+    const ListHotels = `http://127.0.0.1/api/hotels.json`
+    const [cardHotel, setCardHotel] = useState([]);
+    // récupération du fichier au format json
+    useEffect(() => {
+        fetchData()
+      }, []);
+    const fetchData = async () => {
+        const resp = await fetch(ListHotels)
+        const json = await resp.json()
+        setCardHotel(json)
+    } 
 
-    console.log(card)
+    const { slug } = useParams;
+
+    const idHotelContext = createContext()
+    const idHotelProvider = ({ children }) => {
+        return(
+            <idHotelContext value={cardHotel}>
+                {children}
+            </idHotelContext>
+        )
+    }
+    const useHotel = () =>{
+        const context = useContext(idHotelContext)
+
+        if (context === undefined) {
+            throw new Error (`une erreur c'est produite`)
+        }
+        return context
+    }
+    console.log(idHotel)
+    /*
+
+    //définition des routes
+    const HandleRoute = route => (
+        <Route path={route.path}>
+            <route.component />
+        </Route>
+    );*/
+
     return(
         <Wrapper>
             <h1>Hotel de charme <br/>pour les amoureux</h1>
@@ -21,16 +59,16 @@ export default function Home() {
                 <h2>Nos hôtels</h2>
                 <div className="container-hotels">
                     <div className="hotels-card">
-                        {listHotel.map(item =>
-                        <a href={item.link} className="hotels-link" key={item.name}>
+                        {cardHotel.map(item =>
+                        <Link to={{ pathname: "/Hotel/${item.name}", state:{idhotel:item.id}}} className="hotels-link" key={item.id}> 
                             <div className="card-container" >
-                                <img className="hotel-img" src={item.vignette} />
+                                <img className="hotel-img" src={`http://127.0.0.1/upload/images/hotels/${item.vignette}`} />
                                 <figcaption className="label-name" >
                                     <img className="picto_cardHypnos" src="images/picto-hypnos.png"/><br/>
                                     {item.name}
                                 </figcaption>
                             </div>
-                        </a>
+                        </Link>
                         )}
                     </div>
                 </div>

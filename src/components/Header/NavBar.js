@@ -1,13 +1,32 @@
 import React from 'react'
 import './Nav.css'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 export default function NavBar() {
-    const [openNav, setOpenNav] = useState(false)
+    const ListHotels = `http://127.0.0.1/api/hotels.json`
+    const [cardHotel, setCardHotel] = useState([]);
+    // création du fichier json
+    useEffect(() => {
+        fetchData()
+      }, []);
+    const fetchData = async () => {
+        const resp = await fetch(ListHotels)
+        const json = await resp.json()
+        setCardHotel(json)
+    } 
 
+    //ouvrir le menu de nav latéral
+    const [openNav, setOpenNav] = useState(false)
     const handleOpenNav = () => {
         setOpenNav(!openNav)
+        
+    }
+
+    //gestion des pages ouvertes à faire
+    const [isShow, setIsShow] = useState(false)
+    const handleToggle = ()=> {
+        setIsShow(isShow)
     }
 
     console.log(openNav)
@@ -16,34 +35,18 @@ export default function NavBar() {
             <button className='navbar_burger' onClick={handleOpenNav}>
                 <span className='burger_bar'></span>
             </button>
-            <ul className="navbar_links">
+            <ul className={isShow?"navbar_links show_links":"navbar_links"}>
                 <li>
                     <img className="logo-nav" src="images/picto-hypnos.png"/>
                 </li>
                 <li className="navbar_item slideEffect-1">
                     <a href="/" className="navbar_link">Accueil</a>
                 </li>
-                <li className="navbar_item slideEffect-2">
-                    <a href="/Hotel" className="navbar_link">Hypnos Annecy</a>
-                </li>
-                <li className="navbar_item slideEffect-2">
-                    <a href="/Hotel" className ="navbar_link">Hypnos Juan-les-Pins</a>
-                </li>
-                <li className="navbar_item slideEffect-3">
-                    <a href="/Hotel" className="navbar_link">Hypnos Chantilly</a>
-                </li>
-                <li className="navbar_item slideEffect-4">
-                    <a href="/Hotel" className="navbar_link">Hypnos Biarritz</a>
-                </li>
-                <li className="navbar_item slideEffect-5">
-                    <a href="/Hotel" className="navbar_link">Hypnos Aurillac</a>
-                </li>
-                <li className="navbar_item slideEffect-6">
-                    <a href="/Hotel" className="navbar_link">Hypnos Caen</a>
-                </li>
-                <li className="navbar_item slideEffect-7">
-                    <a href="/Hotel" className="navbar_link">Hypnos Strasbourg</a>
-                </li>
+                {cardHotel.map(item =>
+                    <li className="navbar_item slideEffect-2" key={item.id}>
+                        <a href="/Hotel" className="navbar_link">{item.name}</a>
+                    </li>
+                )}
                 <li className="navbar_item slideEffect-8">
                     <a href="/reservation" className="navbar_link">Réservation</a>
                 </li>

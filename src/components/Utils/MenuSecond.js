@@ -3,7 +3,6 @@ import "./MenuSecond.css"
 
 export default function MenuSecond() {
 
-
     const MenuItems = [
     {
         name: "Hôtel information",

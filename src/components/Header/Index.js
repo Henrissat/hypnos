@@ -4,7 +4,7 @@ import NavBar from './NavBar'
 import "./Header.css"
 
 export default function Header() {
-    const location = useLocation();
+    //const location = useLocation();
     return(
         <Wrapper>
             <NavBar />

@@ -1,7 +1,20 @@
+import React from 'react'
 import "./searchBar.css"
-import listHotel from "../Home/ListHotel";
+import { useState, useEffect } from "react"
+//import listHotel from "../Home/ListHotel";
 
-export default function searchBar() {
+export default function SearchBar() {
+    const ListHotels = `http://127.0.0.1/api/hotels.json`
+    const [cardHotel, setCardHotel] = useState([]);
+    // création du fichier json
+    useEffect(() => {
+        fetchData()
+      }, []);
+    const fetchData = async () => {
+        const resp = await fetch(ListHotels)
+        const json = await resp.json()
+        setCardHotel(json)
+    } 
     /*state = {value: ""}
 
     handledeparture = handledeparture.bind(value)
@@ -18,8 +31,8 @@ export default function searchBar() {
     return(
         <form className="search-bar">
             <select className="destination-search" placeholder="Sélectionner une destination">
-                {listHotel.map(destination =>
-                    <option value={destination.name} selected>{destination.name}</option> 
+                {cardHotel.map(destination =>
+                    <option value={destination.name} selected key={destination.id}>{destination.name}</option> 
                     )}
             </select>
             <div className="hotel-date-start">

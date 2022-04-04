@@ -161,6 +161,10 @@
     background-color: #f6d06b;
 }
 
+.show_links{
+    color: #f6d06b;
+}
+
 @media screen and (max-width: 767px){
     .navbar_link{
         font-size: 5vw;

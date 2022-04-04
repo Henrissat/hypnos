@@ -13,9 +13,10 @@ export default function App() {
       <Layout>
         <Routes>
           <Route element={<Home />} path="/"></Route>
-          <Route element={<Hotel />} path="/Hotel" ></Route>
+          <Route element={<Hotel />} path="/Hotel/:id" ></Route>
           <Route element={<Reservation />} path="/Reservation"></Route>
           <Route element={<Contact />} path="/contact"></Route>
+          <Route element={Error} />
         </Routes>
       </Layout>
     </Router>

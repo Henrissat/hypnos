@@ -1,19 +1,34 @@
 import styled from "styled-components";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 import "./hotel.css";
-import Rooms from "./rooms";
+import {useHotel} from '../Home/index';
 import listHotel from "../Home/ListHotel";
 import SearchBar from "../Utils/SearchBar";
 
 export default function Hotel() {
-    const url = "http://localhost:1337";
-    const ListHotels = `${url}/ListHotel`
-    const [card, setCard] = useState([]);
+    const urlHotel = "http://localhost:1337";
+    const ListRooms = `http://127.0.0.1/api/rooms.json`
+    const [cardRooms, setCardRooms] = useState([]);
+    // création du fichier json
+    useEffect(() => {
+        fetchData()
+      }, []);
+    const fetchData = async () => {
+        const resp = await fetch(ListRooms)
+        const json = await resp.json()
+        setCardRooms(json)
+    } 
 
-    const starHotel = [5];
-    //const star = "<span className="star">★</span>" x  starHotel
+    let location = useLocation;
+    console.log(location)
 
-    console.log(starHotel)
+    const hotelId = useHotel()
+    console.log('hotelId', hotelId)
+    /*const filterRooms = 
+    cardRooms.filter((room) => cardRooms.hotel === `/api/hotels/${id}`)*/
+
+
     return(
         <Wrapper>
             <h1>titre ici{listHotel.title}</h1>
@@ -40,7 +55,7 @@ export default function Hotel() {
                 {/* création dynamique de la liste des chambres */}
                 <div className="container-hotels">
                     <div className="hotels-card">
-                        {Rooms.map(item =>
+                        {cardRooms.map(item =>
                         <a href={item.link} className="rooms-link" key={item.rooms}>
                             <div className="card-container" >
                                 <img className="rooms-img" src={item.src} />
