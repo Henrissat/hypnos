@@ -1,9 +1,12 @@
 import React from 'react'
-import './Nav.css'
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react"
+import './Nav.css'
 
 
 export default function NavBar() {
+    const [isLoading, setIsLoading] = useState(true);
+    const urlHotel = "https://hypnos-hotels.herokuapp.com/";
     const ListHotels = `http://127.0.0.1/api/hotels.json`
     const [cardHotel, setCardHotel] = useState([]);
     // création du fichier json
@@ -14,16 +17,16 @@ export default function NavBar() {
         const resp = await fetch(ListHotels)
         const json = await resp.json()
         setCardHotel(json)
+        setIsLoading(false);
     } 
 
     //ouvrir le menu de nav latéral
     const [openNav, setOpenNav] = useState(false)
     const handleOpenNav = () => {
-        setOpenNav(!openNav)
-        
+        setOpenNav(!openNav)   
     }
 
-    //gestion des pages ouvertes à faire
+    //gestion des pages ouvertes : à faire !!
     const [isShow, setIsShow] = useState(false)
     const handleToggle = ()=> {
         setIsShow(isShow)
@@ -37,14 +40,14 @@ export default function NavBar() {
             </button>
             <ul className={isShow?"navbar_links show_links":"navbar_links"}>
                 <li>
-                    <img className="logo-nav" src="images/picto-hypnos.png"/>
+                    <img className="logo-nav" src={`${urlHotel}images/picto-hypnos.png`}/>
                 </li>
                 <li className="navbar_item slideEffect-1">
                     <a href="/" className="navbar_link">Accueil</a>
                 </li>
-                {cardHotel.map(item =>
+                { isLoading ? "chargement des hôtels" : cardHotel.map(item =>
                     <li className="navbar_item slideEffect-2" key={item.id}>
-                        <a href="/Hotel" className="navbar_link">{item.name}</a>
+                        <Link to={`/Hotel/${item.id}/${item.name}`} state={{hotelItem: item}} className="navbar_link">{item.name}</Link>
                     </li>
                 )}
                 <li className="navbar_item slideEffect-8">
@@ -59,9 +62,9 @@ export default function NavBar() {
             </ul>
             <span className='bg_bar'>
             <ul className="sm_navbar">
-                <li><a href="#"><img className="sm_picto" src="images/picto-facebook.png"/></a></li>
-                <li><a href="#"><img className="sm_picto" src="images/picto-instagram.png"/></a></li>
-                <li><a href="#"><img className="sm_picto" src="images/picto-twitter.png"/></a></li>
+                <li><a href="#"><img className="sm_picto" src={`${urlHotel}images/picto-facebook.png`}/></a></li>
+                <li><a href="#"><img className="sm_picto" src={`${urlHotel}images/picto-instagram.png`}/></a></li>
+                <li><a href="#"><img className="sm_picto" src={`${urlHotel}images/picto-twitter.png`}/></a></li>
             </ul>
             </span>
         </nav>

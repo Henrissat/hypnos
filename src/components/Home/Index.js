@@ -1,57 +1,23 @@
 import styled from "styled-components";
-import React, { useState, useEffect, useContext } from 'react';
-import { Link, useParams} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+import { useHypnos } from "./hypnos-context";
 import "./Home.css"
-import Hotel from "../Hotel/Index";
 //import listHotel from "./ListHotel";
 import SearchBar from "../Utils/SearchBar"
 
-export default function Home({useHotel}) {
-    //const urlHotel = "http://127.0.0.1/api/";
+export default function Home() {
+    //const [isLoading, setIsLoading] = useState(true);
+    const urlHotel = "https://hypnos-hotels.herokuapp.com/";
     const ListHotels = `http://127.0.0.1/api/hotels.json`
-    const [cardHotel, setCardHotel] = useState([]);
-    // récupération du fichier au format json
-    useEffect(() => {
-        fetchData()
-      }, []);
-    const fetchData = async () => {
-        const resp = await fetch(ListHotels)
-        const json = await resp.json()
-        setCardHotel(json)
-    } 
 
-    const { slug } = useParams;
-
-    const idHotelContext = createContext()
-    const idHotelProvider = ({ children }) => {
-        return(
-            <idHotelContext value={cardHotel}>
-                {children}
-            </idHotelContext>
-        )
-    }
-    const useHotel = () =>{
-        const context = useContext(idHotelContext)
-
-        if (context === undefined) {
-            throw new Error (`une erreur c'est produite`)
-        }
-        return context
-    }
-    console.log(idHotel)
-    /*
-
-    //définition des routes
-    const HandleRoute = route => (
-        <Route path={route.path}>
-            <route.component />
-        </Route>
-    );*/
+    const hotelData = useHypnos()
+    console.log('hotelData', hotelData)
 
     return(
         <Wrapper>
             <h1>Hotel de charme <br/>pour les amoureux</h1>
-            <HeaderBg_home/>
+            <img src={`${urlHotel}/images/chandelier-g6f5a69dd7_1920.jpg`} className="bgHeader"/>
             {/* import de la barre de réservation */}
             <SearchBar />
             {/* création en dynamique de la liste des hotels */}
@@ -59,12 +25,12 @@ export default function Home({useHotel}) {
                 <h2>Nos hôtels</h2>
                 <div className="container-hotels">
                     <div className="hotels-card">
-                        {cardHotel.map(item =>
-                        <Link to={{ pathname: "/Hotel/${item.name}", state:{idhotel:item.id}}} className="hotels-link" key={item.id}> 
+                        { /*isLoading ? "chargement des hôtels" :*/ hotelData.map(item =>
+                         <Link to={`/Hotel/${item.id}/${item.name}`} state={{hotelItem: item}} className="hotels-link" key={item.id}>
                             <div className="card-container" >
                                 <img className="hotel-img" src={`http://127.0.0.1/upload/images/hotels/${item.vignette}`} />
                                 <figcaption className="label-name" >
-                                    <img className="picto_cardHypnos" src="images/picto-hypnos.png"/><br/>
+                                    <img className="picto_cardHypnos" src={`${urlHotel}images/picto-hypnos.png`}/><br/>
                                     {item.name}
                                 </figcaption>
                             </div>
@@ -101,17 +67,6 @@ export default function Home({useHotel}) {
 
 const Wrapper = styled.div`
     width: 100%;
-`;
-
-const HeaderBg_home = styled.div`
-    position: relative;
-    z-index: -5;
-    width: 100%;
-    height: 80vh;
-    background-image: url("images/chandelier-g6f5a69dd7_1920.jpg"); no-repeat;
-    background-position: center center;
-    background-size: cover;
-    filter: brightness(40%);
 `;
 
 const Apropos = styled.div`

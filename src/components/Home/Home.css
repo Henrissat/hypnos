@@ -17,6 +17,16 @@ h3{
   color: #bf912d;
 }
 
+.bgHeader{
+  position: relative;
+  z-index: -5;
+  width: 100%;
+  height: 80vh;
+  background-position: center center;
+  background-size: cover;
+  filter: brightness(40%);
+}
+
 .headerBg{
   width: 100%;
   height: 100%;
@@ -84,6 +94,7 @@ figcaption{
 .content-home{
   position: relative;
   background-color: #eaecea;
+  height: 100vh;
 }
 
 .container-apropos{

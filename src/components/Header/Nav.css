@@ -105,6 +105,11 @@
 .navbar_item{
     transform:  translateY(100vh);
 }
+
+.navbar_link:hover{
+    color:#f6d06b;
+}
+
 .nav-on .navbar_item{
     transform:  translateY(0);
 }

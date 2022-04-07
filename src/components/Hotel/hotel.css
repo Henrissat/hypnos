@@ -1,3 +1,14 @@
+.bgHeader{
+    position: relative;
+    z-index: -5;
+    width: 100%;
+    height: 80vh;
+    background-image: url();
+    background-position: center center;
+    background-size: cover;
+    filter: brightness(40%);
+}
+
 .list-menuSecond{
     display: flex;
     text-align: center;

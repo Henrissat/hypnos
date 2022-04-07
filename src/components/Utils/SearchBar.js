@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 //import listHotel from "../Home/ListHotel";
 
 export default function SearchBar() {
+    const [isLoading, setIsLoading] = useState(true);
+    const urlHotel = "https://hypnos-hotels.herokuapp.com/";
     const ListHotels = `http://127.0.0.1/api/hotels.json`
     const [cardHotel, setCardHotel] = useState([]);
     // création du fichier json
@@ -14,6 +16,7 @@ export default function SearchBar() {
         const resp = await fetch(ListHotels)
         const json = await resp.json()
         setCardHotel(json)
+        setIsLoading(false);
     } 
     /*state = {value: ""}
 
@@ -31,7 +34,7 @@ export default function SearchBar() {
     return(
         <form className="search-bar">
             <select className="destination-search" placeholder="Sélectionner une destination">
-                {cardHotel.map(destination =>
+                { isLoading ? "chargement des hôtels" : cardHotel.map(destination =>
                     <option value={destination.name} selected key={destination.id}>{destination.name}</option> 
                     )}
             </select>
@@ -57,7 +60,7 @@ export default function SearchBar() {
             </div>
             <button type="submit" value="Réserver" className="btn_travelSearch">
                         Réserver
-                        <img href="#" src="images/picto_search.png" className="picto-search"/>
+                        <img href="#" src={`${urlHotel}images/picto_search.png`} className="picto-search"/>
             </button>
         </form>
     )

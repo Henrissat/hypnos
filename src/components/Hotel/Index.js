@@ -1,38 +1,36 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams, Link } from "react-router-dom";
+import { useRooms } from "./room-context";
 import "./hotel.css";
-import {useHotel} from '../Home/index';
-import listHotel from "../Home/ListHotel";
 import SearchBar from "../Utils/SearchBar";
 
 export default function Hotel() {
-    const urlHotel = "http://localhost:1337";
-    const ListRooms = `http://127.0.0.1/api/rooms.json`
-    const [cardRooms, setCardRooms] = useState([]);
-    // création du fichier json
-    useEffect(() => {
-        fetchData()
-      }, []);
-    const fetchData = async () => {
-        const resp = await fetch(ListRooms)
-        const json = await resp.json()
-        setCardRooms(json)
-    } 
+    //const [isLoading, setIsLoading] = useState(true);
+    const urlServer = "https://serveur-hypnos.herokuapp.com/";
+    const urlHotel = "https://hypnos-hotels.herokuapp.com/";
+    const roomData = useRooms()
+    console.log('roomData', roomData)
 
-    let location = useLocation;
-    console.log(location)
-
-    const hotelId = useHotel()
-    console.log('hotelId', hotelId)
-    /*const filterRooms = 
-    cardRooms.filter((room) => cardRooms.hotel === `/api/hotels/${id}`)*/
-
+    //Récupérer Hotel en cours
+    const hotelItem = useLocation() 
+    console.log(hotelItem.state.hotelItem)
+    const currentHotel = hotelItem.state.hotelItem
+     
+    //Filtrer Hotel de mon API en fontion de leur id
+    let { id } = useParams()
+    const filterId = roomData.filter((value) => {
+    if (value.Hotel === `/api/hotels/${id}`)
+        return value
+    }) 
+    /*else (value.Hotel === undefined) {
+        throw new Error (`une erreur c'est produite`)
+    }*/
 
     return(
         <Wrapper>
-            <h1>titre ici{listHotel.title}</h1>
-            <HeaderBg_home/>
+            <h1>{currentHotel.title}</h1>
+            <img src={`${urlServer}upload/images/hotels/${currentHotel.img_header}`} className="bgHeader"/>
             {/* import de la barre de réservation */}
             <SearchBar />
             <div className="container-home">
@@ -47,31 +45,31 @@ export default function Hotel() {
                 </MenuSecond>
                 {/* Infos hotel */}
                 <div className="blocInfo-hotel">
-                    <p className="blocInfo-name">Hôtel Annecy palace</p>
-                    <p className="blocInfo-star"><span className="star">★</span></p>
-                    <p className="blocInfo-adress"><img src="images/map-point.png" className="map-point"/>All. de l'Impérial, 74000 Annecy</p>
+                    <p className="blocInfo-name">Hôtel {currentHotel.name} palace</p>
+                    <p className="blocInfo-star"><span className="star">{currentHotel.stars}★</span></p>
+                    <p className="blocInfo-adress"><img src={`${urlHotel}images/map-point.png`} className="map-point"/>{currentHotel.adress} </p>
                 </div>
                 <h2>Nos chambres</h2>
                 {/* création dynamique de la liste des chambres */}
                 <div className="container-hotels">
                     <div className="hotels-card">
-                        {cardRooms.map(item =>
-                        <a href={item.link} className="rooms-link" key={item.rooms}>
+                        { /*isLoading ? "chargement des chambres" :*/ filterId.map(item =>
+                        <Link to={`/Room/${item.id}/${item.name}`} state={{roomItem: item}} className="rooms-link" key={item.id}>
                             <div className="card-container" >
-                                <img className="rooms-img" src={item.src} />
-                                <img className="picto_cardHypnos-rooms" src="images/picto-hypnos.png"/><br/>
+                                <img className="rooms-img" src={`http://127.0.0.1/upload/images/rooms/${item.pictures}`} />
+                                <img className="picto_cardHypnos-rooms" src={`${urlHotel}images/picto-hypnos.png`}/><br/>
                                 <div style={{padding:"0 2rem"}}>
                                     <p className="suite-txt">SUITE</p>
                                     <p className="rooms-name">{item.shortDescription}</p>
                                     <p className="rooms-description">{item.description}</p>
                                     <p className="rooms-disponibilite">Seulement {item.nbr} chambres disponibles</p>
-                                    <p className="rooms-price">{item.price}</p>
+                                    <p className="rooms-price">{item.price}/Nuit</p>
                                     <button className="button" href="#">
                                         Réserver une chambre >
                                     </button>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                         )}
                     </div>
                 </div>
@@ -81,7 +79,7 @@ export default function Hotel() {
                     <Apropos className="content-apropos"></Apropos>
                     <div className="container-bienvenue">
                             <h3>Bienvenue</h3>
-                            <img className="arabesque" src="images/arabesque.png" />
+                            <img className="arabesque" src={`${urlHotel}images/arabesque.png`} />
                             <p>Hypnos est un groupe hôtelier fondé en 2004. Propriétaire de 7 établissements dans les quatre coins de l’hexagone, chacun de ces hôtels s’avère être une destination idéale pour les couples en quête d’un séjour romantique à deux.
                             <br/>Chaque suite au design luxueux inclut des services hauts de gamme (un spa privatif notamment), de quoi plonger pleinement dans une atmosphère chic-romantique.</p>
                             <a className="txt-link" href="#">En savoir plus</a>
@@ -101,20 +99,10 @@ export default function Hotel() {
         </Wrapper>
     );
 }
+//{`${urlServer}${currentHotel.img_header}`}
 
 const Wrapper = styled.div`
     width: 100%;
-`;
-
-const HeaderBg_home = styled.div`
-    position: relative;
-    z-index: -5;
-    width: 100%;
-    height: 80vh;
-    background-image: url("images/hotel-annecy.jpg"); no-repeat;
-    background-position: center center;
-    background-size: cover;
-    filter: brightness(40%);
 `;
 
 const Apropos = styled.div`
