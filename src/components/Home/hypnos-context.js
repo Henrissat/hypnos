@@ -15,16 +15,17 @@ const HypnosProvider = ({ children }) => {
         const json = await resp.json()
         setCardHotel(json)
         setIsLoading(false);
-    } 
-
-    //créer le Context Hotels pour tout le site
+    }
+    
+    //Disctribuer les données du context à tout le site
     return (
-        <HypnosContext.Provider value={cardHotel}>
+        <HypnosContext.Provider value={cardHotel} >
             {children}
         </HypnosContext.Provider>
     )
 }
 
+//créer le Context Hotels pour tout le site
 const useHypnos = () => {
     const context = useContext(HypnosContext)
 
@@ -34,4 +35,4 @@ const useHypnos = () => {
     return context
 }
 
-export { HypnosProvider, useHypnos }
+export { HypnosProvider, useHypnos, HypnosContext }

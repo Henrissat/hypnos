@@ -1,4 +1,5 @@
 import React, { useState, useEffect,  useContext } from 'react'
+import { useLocation, useParams } from "react-router-dom";
 
 const RoomsContext = React.createContext()
 
@@ -17,7 +18,7 @@ const RoomsProvider = ({ children }) => {
         setIsLoading(false);
     } 
 
-    //créer le Context Rooms accessible pour tout le site
+    //Disctribuer les données du context à tout le site
     return (
         <RoomsContext.Provider value={cardRooms}>
             {children}
@@ -25,6 +26,15 @@ const RoomsProvider = ({ children }) => {
     )
 }
 
+//Récupérer Hotel en cours
+const useCurrentHotel = () => {
+    const hotelItem = useLocation()
+    const currentHotel = hotelItem.state.hotelItem
+     
+    return currentHotel
+}
+
+//créer le Context Rooms
 const useRooms = () => {
     const context = useContext(RoomsContext)
 
@@ -34,4 +44,4 @@ const useRooms = () => {
     return context
 }
 
-export { RoomsProvider, useRooms }
+export { RoomsProvider, useRooms, useCurrentHotel }

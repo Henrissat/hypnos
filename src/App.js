@@ -1,9 +1,6 @@
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Layout from "./components/UI/Layout";
-
-import { HypnosProvider } from "./components/Home/hypnos-context"
-import { RoomsProvider } from "./components/Hotel/room-context"
 import Home from "./components/Home/Index";
 import Hotel from "./components/Hotel/Index";
 import Room from "./components/Room/index";
@@ -12,8 +9,6 @@ import Contact from "./components/Contact/Index";
 
 export default function App() {
   return (
-    <HypnosProvider>
-      <RoomsProvider>
         <Router>
           <Layout>
             <Routes>
@@ -30,8 +25,6 @@ export default function App() {
             </Routes>
           </Layout>
         </Router>
-      </RoomsProvider>
-    </HypnosProvider>
   );
 }
 

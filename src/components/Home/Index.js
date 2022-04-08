@@ -11,8 +11,8 @@ export default function Home() {
     const urlHotel = "https://hypnos-hotels.herokuapp.com/";
     const ListHotels = `http://127.0.0.1/api/hotels.json`
 
+    //Récupérer les hotels
     const hotelData = useHypnos()
-    console.log('hotelData', hotelData)
 
     return(
         <Wrapper>

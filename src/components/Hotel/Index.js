@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams, Link } from "react-router-dom";
 import { useRooms } from "./room-context";
+import { useCurrentHotel } from "./room-context";
 import "./hotel.css";
 import SearchBar from "../Utils/SearchBar";
 
@@ -9,23 +10,28 @@ export default function Hotel() {
     //const [isLoading, setIsLoading] = useState(true);
     const urlServer = "https://serveur-hypnos.herokuapp.com/";
     const urlHotel = "https://hypnos-hotels.herokuapp.com/";
-    const roomData = useRooms()
-    console.log('roomData', roomData)
+    const roomsData = useRooms()
 
     //Récupérer Hotel en cours
     const hotelItem = useLocation() 
-    console.log(hotelItem.state.hotelItem)
     const currentHotel = hotelItem.state.hotelItem
-     
+    
     //Filtrer Hotel de mon API en fontion de leur id
     let { id } = useParams()
-    const filterId = roomData.filter((value) => {
-    if (value.Hotel === `/api/hotels/${id}`)
-        return value
+    const filterIdRooms = roomsData.filter((value) => {
+        if (value.Hotel === `/api/hotels/${id}`)
+            return value
     }) 
+ 
     /*else (value.Hotel === undefined) {
         throw new Error (`une erreur c'est produite`)
     }*/
+
+    //Récupérer l'hotels 
+    const hotelCurrent = useCurrentHotel()
+    console.log(hotelCurrent)
+
+
 
     return(
         <Wrapper>
@@ -53,7 +59,7 @@ export default function Hotel() {
                 {/* création dynamique de la liste des chambres */}
                 <div className="container-hotels">
                     <div className="hotels-card">
-                        { /*isLoading ? "chargement des chambres" :*/ filterId.map(item =>
+                        { /*isLoading ? "chargement des chambres" :*/ filterIdRooms.map(item =>
                         <Link to={`/Room/${item.id}/${item.name}`} state={{roomItem: item}} className="rooms-link" key={item.id}>
                             <div className="card-container" >
                                 <img className="rooms-img" src={`http://127.0.0.1/upload/images/rooms/${item.pictures}`} />
@@ -99,7 +105,6 @@ export default function Hotel() {
         </Wrapper>
     );
 }
-//{`${urlServer}${currentHotel.img_header}`}
 
 const Wrapper = styled.div`
     width: 100%;

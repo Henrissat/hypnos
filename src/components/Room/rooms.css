@@ -22,7 +22,7 @@
 }
 
 h4 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #bf912d;
     margin: 0.5rem 0;
 }
@@ -31,16 +31,40 @@ h5{
     margin: 1rem 0;
 }
 
+.informations{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column-infos{
+    flex-direction: column;
+    margin-right: 5rem;
+}
+.picto-room{
+    width: 30px;
+}
+
 .room-infos{
 
 }
 
-.informations{
+.container-infos{
 
 }
 
 .description-room{
     margin-top: 3rem;
+}
+
+.extras-room{
+    position: relative;
+    display: block;
+    top: 3rem;
+    margin-bottom: 10vh;
+}
+
+.extras-room ul{
+    column-count: 2;
 }
 
 .reservation{

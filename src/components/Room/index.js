@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+import { useCurrentHotel } from "../Hotel/room-context";
 import SearchBar from "../Utils/SearchBar";
 import Reservation from "../Utils/Reservation";
 import "./rooms.css";
@@ -15,12 +16,20 @@ export default function Room() {
   console.log(hotelItem.state.hotelItem)
   const currentHotel = hotelItem.state.hotelItem*/
 
-  //Récupérer Room en cours
+  //Récupérer Rooms
   const roomItem = useLocation() 
   const currentRoom = roomItem.state.roomItem
 
+  //Récupérer l'hotel en cours
+  //const hotelCurrent = useHotel()
+  //console.log(hotelCurrent)
+  //console.log(currentRoom)
 
-  console.log(currentRoom)
+  //Récupérer l'hotels 
+  const hotelCurrent = useCurrentHotel()
+  console.log(hotelCurrent)
+  
+
 
   return (
     <Wrapper>
@@ -30,33 +39,64 @@ export default function Room() {
             {/* import de la barre de réservation */}
             <SearchBar />
             <h2>Suite {currentRoom.title}</h2>
-            {/*<div className='galerie-img"'>
+            {/*<div className="galerie-img">
               {GalerieImg.map(index => {
                 return <img />
               })}
 
             </div>*/}
             <sections className="content-room">
-                <div className='room-infos'>
-                    <article className='informations'>
+                <div className="room-infos">
+                    <article className="container-infos">
                       <h4>Informations</h4>
-                      <h5 className='price-room'>Prix : </h5>
-                      <h5>Taille : </h5>
-                      {/*<h5>{currentRoom.breakfast && "Petit déjeunée inclu"}</h5>
-                      <h5>
+                      <div className="informations">
+                        <div className="column-infos"><img src="./images/picto-bed.png" className="picto-room"/>
+                          <h5>1 Lit double</h5>
+                        </div>
+                        <div className="column-infos"><img src="./images/picto-bed.png" className="picto-room"/>
+                          <h5>Taille : </h5>
+                        </div>
+                        <div className="column-infos"><img src="./images/picto-bed.png" className="picto-room"/>
+                          <h5>1 baignoire</h5>
+                        </div>
+                        <div className="column-infos"><img src="./images/picto-bed.png" className="picto-room"/>
+                          <h5>2 personnes </h5>
+                        </div>
+                        <div className="column-infos"><img src="./images/picto-bed.png" className="picto-room"/>
+                          <h5>petit déjeunée inclus</h5>
+                        </div>
+                         {/*<h5>{currentRoom.breakfast && "Petit déjeunée inclu"}</h5>
+                        <h5>
                         Capacité maximum : {" "}
                         {currentRoom.capacity > 1 ? `${currentRoom.capacity} personne` : `${currentRoom.capacity} persone`
                         }
-                      </h5>*/}  
+                        </h5>*/}  
+                      </div>
                     </article>
-                    <article className='description-room'>
-                      <h4 className='details-room'>Détails</h4>
+                    <article className="description-room">
+                      <h4 className="details-room">Détails</h4>
                       <p>
                         {currentRoom.description}
                       </p>
                     </article>
+                    <artcle className="extras-room">
+                        <h4>Pour votre confort : </h4>
+                        <ul>
+                          <li><span>✓ </span>Balcon</li>
+                          <li><span>✓ </span>Grand lit ou lits jumeaux</li>
+                          <li><span>✓ </span>Wi-Fi</li>
+                          <li><span>✓ </span>Téléphone</li>
+                          <li><span>✓ </span>Télévision par satellite</li>
+                          <li><span>✓ </span>Minibar</li>
+                          <li><span>✓ </span>Machine à café Nespresso</li>
+                          <li><span>✓ </span>Coffre-fort</li>
+                          <li><span>✓ </span>Balcon</li>
+                          <li><span>✓ </span>parking gratuit</li>
+                          <li><span>✓ </span>Toaster</li>
+                        </ul>
+                    </artcle>
                 </div>
-                <Reservation className='reservation' />
+                <Reservation className="reservation" />
             </sections>
             {/* Autres Suites */}
     </Wrapper>
