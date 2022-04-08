@@ -5,29 +5,22 @@ import { useCurrentHotel } from "../Hotel/room-context";
 import SearchBar from "../Utils/SearchBar";
 import Reservation from "../Utils/Reservation";
 import "./rooms.css";
+import { useHypnos } from "../Home/hypnos-context";
+
 
 export default function Room() {
   const urlServer = "https://serveur-hypnos.herokuapp.com/";
   const urlHotel = "https://hypnos-hotels.herokuapp.com/";
 
-  /*
-  //Récupérer Hotel en cours
-  const hotelItem = useLocation() 
-  console.log(hotelItem.state.hotelItem)
-  const currentHotel = hotelItem.state.hotelItem*/
-
   //Récupérer Rooms
   const roomItem = useLocation() 
   const currentRoom = roomItem.state.roomItem
-
-  //Récupérer l'hotel en cours
-  //const hotelCurrent = useHotel()
-  //console.log(hotelCurrent)
-  //console.log(currentRoom)
+  const hotelData = useHypnos()
+  const currentHotel = hotelData.filter(({id} )=> id === currentRoom.id)[0]
 
   //Récupérer l'hotels 
   const hotelCurrent = useCurrentHotel()
-  console.log(hotelCurrent)
+  console.log(hotelCurrent, currentHotel)
   
 
 

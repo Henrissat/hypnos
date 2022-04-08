@@ -7,7 +7,7 @@ import './Nav.css'
 export default function NavBar() {
     const [isLoading, setIsLoading] = useState(true);
     const urlHotel = "https://hypnos-hotels.herokuapp.com/";
-    const ListHotels = `http://127.0.0.1/api/hotels.json`
+    const ListHotels = `http://localhost:3000/images/hotels.json`
     const [cardHotel, setCardHotel] = useState([]);
     // création du fichier json
     useEffect(() => {

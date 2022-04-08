@@ -28,11 +28,13 @@ const RoomsProvider = ({ children }) => {
 
 //Récupérer Hotel en cours
 const useCurrentHotel = () => {
-    const hotelItem = useLocation()
+    const hotelItem = useLocation(RoomsContext)
     const currentHotel = hotelItem.state.hotelItem
+
      
     return currentHotel
 }
+
 
 //créer le Context Rooms
 const useRooms = () => {

@@ -15,13 +15,10 @@ export default function Hotel() {
     //Récupérer Hotel en cours
     const hotelItem = useLocation() 
     const currentHotel = hotelItem.state.hotelItem
-    
     //Filtrer Hotel de mon API en fontion de leur id
-    let { id } = useParams()
-    const filterIdRooms = roomsData.filter((value) => {
-        if (value.Hotel === `/api/hotels/${id}`)
-            return value
-    }) 
+    let { slug, id } = useParams()
+    console.log(hotelItem, slug, roomsData)
+    const filterIdRooms = roomsData.filter(room => room.id === currentHotel.id) 
  
     /*else (value.Hotel === undefined) {
         throw new Error (`une erreur c'est produite`)

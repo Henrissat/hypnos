@@ -6,7 +6,7 @@ import "./Home.css"
 import SearchBar from "../Utils/SearchBar"
 
 function RoomDetail({ match }) {
-    const ListRooms = `http://127.0.0.1/api/rooms.json`
+    const ListRooms = `http://localhost:3000/images/rooms.json`
     const [cardHotel, setCardHotel] = useState({});
     // récupération du fichier au format json
     useEffect(() => {

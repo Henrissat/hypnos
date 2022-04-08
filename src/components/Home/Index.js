@@ -26,7 +26,7 @@ export default function Home() {
                 <div className="container-hotels">
                     <div className="hotels-card">
                         { /*isLoading ? "chargement des hôtels" :*/ hotelData.map(item =>
-                         <Link to={`/Hotel/${item.id}/${item.name}`} state={{hotelItem: item}} className="hotels-link" key={item.id}>
+                         <Link to={`/Hotel/${item.name}`} state={{hotelItem: item}} className="hotels-link" key={item.name}>
                             <div className="card-container" >
                                 <img className="hotel-img" src={`http://127.0.0.1/upload/images/hotels/${item.vignette}`} />
                                 <figcaption className="label-name" >
