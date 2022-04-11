@@ -9,7 +9,7 @@ import SearchBar from "../Utils/SearchBar"
 export default function Home() {
     //const [isLoading, setIsLoading] = useState(true);
     const urlHotel = "https://hypnos-hotels.herokuapp.com/";
-    const ListHotels = `http://127.0.0.1/api/hotels.json`
+    const ListHotels = `http://127.0.0.1/api/hotels.json`;
 
     //Récupérer les hotels
     const hotelData = useHypnos()
@@ -70,5 +70,5 @@ const Wrapper = styled.div`
 `;
 
 const Apropos = styled.div`
-    background-image: url("images/basement-g619d6f8e7_1920.jpg"); no-repeat;
+    background-image: url("/images/basement-g619d6f8e7_1920.jpg"); no-repeat;
 `;
