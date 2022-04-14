@@ -20,15 +20,15 @@ export default function Room() {
 
   //Récupérer l'hotels 
   const hotelCurrent = useCurrentHotel()
-  console.log(hotelCurrent, currentHotel)
-  
+  console.log(hotelData)
+  console.log(hotelCurrent)
+  console.log(currentHotel)
 
 
   return (
     <Wrapper>
-            {/*<h1>{currentHotel.title}</h1>*/}
-            {/*<img src={`${urlServer}upload/images/Rooms/${currentRoom.pictures}`} className="bgHeader"/>*/}
-            {/*<img src={`https://serveur-hypnos.herokuapp.com/upload/images/Rooms/${currentRoom.pictures}`} className="bgHeaderRoom"/>*/}
+            <h1>{currentHotel.title}</h1>
+            <img src={`${urlServer}upload/images/hotels/${currentHotel.img_header}`} className="bgHeader"/>
             {/* import de la barre de réservation */}
             <SearchBar />
             <h2>Suite {currentRoom.title}</h2>

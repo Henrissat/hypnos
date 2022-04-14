@@ -17,8 +17,7 @@ export default function Hotel() {
     const currentHotel = hotelItem.state.hotelItem
     //Filtrer Hotel de mon API en fontion de leur id
     let { slug, id } = useParams()
-    console.log(hotelItem, slug, roomsData)
-    const filterIdRooms = roomsData.filter(room => room.id === currentHotel.id) 
+    const filterIdRooms = roomsData.filter(room => room.hotel === `/api/hotels/${currentHotel.id}`) 
  
     /*else (value.Hotel === undefined) {
         throw new Error (`une erreur c'est produite`)
@@ -26,14 +25,11 @@ export default function Hotel() {
 
     //Récupérer l'hotels 
     const hotelCurrent = useCurrentHotel()
-    console.log(hotelCurrent)
-
-
 
     return(
         <Wrapper>
             <h1>{currentHotel.title}</h1>
-            {/*<img src={`${urlServer}upload/images/hotels/${currentHotel.img_header}`} className="bgHeader"/>*/}
+            <img src={`${urlServer}upload/images/hotels/${currentHotel.img_header}`} className="bgHeader"/>
             {/* import de la barre de réservation */}
             <SearchBar />
             <div className="container-home">
@@ -59,7 +55,7 @@ export default function Hotel() {
                         { /*isLoading ? "chargement des chambres" :*/ filterIdRooms.map(item =>
                         <Link to={`/Room/${item.id}/${item.name}`} state={{roomItem: item}} className="rooms-link" key={item.id}>
                             <div className="card-container" >
-                                <img className="rooms-img" src={`http://127.0.0.1/upload/images/rooms/${item.pictures}`} />
+                                <img className="rooms-img" src={`${urlServer}/upload/images/rooms/${item.pictures}`} />
                                 <img className="picto_cardHypnos-rooms" src={`${urlHotel}images/picto-hypnos.png`}/><br/>
                                 <div style={{padding:"0 2rem"}}>
                                     <p className="suite-txt">SUITE</p>
@@ -81,7 +77,7 @@ export default function Hotel() {
                 <div className="container-apropos">
                     <Apropos className="content-apropos"></Apropos>
                     <div className="container-bienvenue">
-                            <h3>Bienvenue</h3>
+                            <h3>Bienvenue à {currentHotel.name}</h3>
                             <img className="arabesque" src={`${urlHotel}images/arabesque.png`} />
                             <p>Hypnos est un groupe hôtelier fondé en 2004. Propriétaire de 7 établissements dans les quatre coins de l’hexagone, chacun de ces hôtels s’avère être une destination idéale pour les couples en quête d’un séjour romantique à deux.
                             <br/>Chaque suite au design luxueux inclut des services hauts de gamme (un spa privatif notamment), de quoi plonger pleinement dans une atmosphère chic-romantique.</p>
@@ -108,7 +104,7 @@ const Wrapper = styled.div`
 `;
 
 const Apropos = styled.div`
-    background-image: url("images/basement-g619d6f8e7_1920.jpg"); no-repeat;
+    background-image: url("/images/pattern-hypnos.jpg"); no-repeat;
 `;
 
 const MenuSecond = styled.nav`

@@ -9,7 +9,8 @@ import SearchBar from "../Utils/SearchBar"
 export default function Home() {
     //const [isLoading, setIsLoading] = useState(true);
     const urlHotel = "https://hypnos-hotels.herokuapp.com/";
-    const ListHotels = `http://127.0.0.1/api/hotels.json`;
+    const urlServer = "https://serveur-hypnos.herokuapp.com/";
+    //const ListHotels = `http://127.0.0.1/api/hotels.json`;
 
     //Récupérer les hotels
     const hotelData = useHypnos()
@@ -28,7 +29,7 @@ export default function Home() {
                         { /*isLoading ? "chargement des hôtels" :*/ hotelData.map(item =>
                          <Link to={`/Hotel/${item.name}`} state={{hotelItem: item}} className="hotels-link" key={item.name}>
                             <div className="card-container" >
-                                <img className="hotel-img" src={`http://127.0.0.1/upload/images/hotels/${item.vignette}`} />
+                                <img className="hotel-img" src={`${urlServer}upload/images/hotels/${item.vignette}`} />
                                 <figcaption className="label-name" >
                                     <img className="picto_cardHypnos" src={`${urlHotel}images/picto-hypnos.png`}/><br/>
                                     {item.name}

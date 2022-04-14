@@ -5,7 +5,7 @@ const HypnosContext = React.createContext()
 const HypnosProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
     const urlServer = "https://serveur-hypnos.herokuapp.com/";
-    const ListHotels = `https://serveur-hypnos.herokuapp.com/api/hotels`
+    const ListHotels = `${urlServer}api/hotels`;
     const [cardHotel, setCardHotel] = useState([]);
     // récupération du fichier au format json
     useEffect(() => {
@@ -14,10 +14,10 @@ const HypnosProvider = ({ children }) => {
     const fetchDatas = async () => {
         const resp = await fetch(ListHotels)
         const json = await resp.json()
-        setCardHotel(json.member)
+        setCardHotel(json['hydra:member'])
         setIsLoading(false);
     }
-    console.log(cardHotel)
+
     
     //Disctribuer les données du context à tout le site
     return (

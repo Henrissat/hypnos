@@ -148,6 +148,10 @@
     cursor: pointer;
 }
 
+/*.content-apropos{
+    background-image: url("H:\MATHIEU\Graphisme_Travail_cours\travail\EN COURS\FORMATION STUDI\ECF - Hypnos\hypnos\public\images\pattern-hypnos.jpg");
+}*/
+
 @media screen and (max-width: 767px){
     .list-menuSecond{
         flex-direction: column;

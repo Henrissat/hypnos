@@ -1,11 +1,12 @@
 import React, { useState, useEffect,  useContext } from 'react'
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const RoomsContext = React.createContext()
 
 const RoomsProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
-    const ListRooms = `http://127.0.0.1/api/rooms.json`;
+    const urlServer = 'https://serveur-hypnos.herokuapp.com/';
+    const ListRooms = `${urlServer}api/rooms`;
     const [cardRooms, setCardRooms] = useState([]);
     // création du fichier json
     useEffect(() => {
@@ -14,10 +15,11 @@ const RoomsProvider = ({ children }) => {
     const fetchData = async () => {
         const resp = await fetch(ListRooms)
         const json = await resp.json()
-        setCardRooms(json)
+        setCardRooms(json['hydra:member'])
         setIsLoading(false);
     } 
 
+    
     //Disctribuer les données du context à tout le site
     return (
         <RoomsContext.Provider value={cardRooms}>
@@ -30,8 +32,6 @@ const RoomsProvider = ({ children }) => {
 const useCurrentHotel = () => {
     const hotelItem = useLocation(RoomsContext)
     const currentHotel = hotelItem.state.hotelItem
-
-     
     return currentHotel
 }
 
