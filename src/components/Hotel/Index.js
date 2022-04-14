@@ -33,7 +33,7 @@ export default function Hotel() {
     return(
         <Wrapper>
             <h1>{currentHotel.title}</h1>
-            <img src={`${urlServer}upload/images/hotels/${currentHotel.img_header}`} className="bgHeader"/>
+            {/*<img src={`${urlServer}upload/images/hotels/${currentHotel.img_header}`} className="bgHeader"/>*/}
             {/* import de la barre de réservation */}
             <SearchBar />
             <div className="container-home">

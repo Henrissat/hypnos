@@ -28,7 +28,7 @@ export default function Room() {
     <Wrapper>
             {/*<h1>{currentHotel.title}</h1>*/}
             {/*<img src={`${urlServer}upload/images/Rooms/${currentRoom.pictures}`} className="bgHeader"/>*/}
-            <img src={`http://127.0.0.1/upload/images/Rooms/${currentRoom.pictures}`} className="bgHeaderRoom"/>
+            {/*<img src={`https://serveur-hypnos.herokuapp.com/upload/images/Rooms/${currentRoom.pictures}`} className="bgHeaderRoom"/>*/}
             {/* import de la barre de réservation */}
             <SearchBar />
             <h2>Suite {currentRoom.title}</h2>

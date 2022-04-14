@@ -20,6 +20,7 @@ export default function App() {
               </Route>
               <Route element={<Reservation />} path="/Reservation"></Route>
               <Route element={<Contact />} path="/contact"></Route>
+
               <Route element={Error} />
             </Routes>
           </Layout>
@@ -27,3 +28,5 @@ export default function App() {
   );
 }
 
+// <Route element={<Admin />} path="/Admin"></Route>
+// <Route element={<Login />} path="/Login"></Route>
