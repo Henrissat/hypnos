@@ -11,7 +11,7 @@ export default function Header() {
     return(
         <Wrapper>
             <NavBar />
-            <div className="logo_header"><img className="logo_hypnos" src={`${urlHotel}images/logo-hypnos.png`}/></div>
+            <a className="logo_header" href="/"><img className="logo_hypnos" src={`${urlHotel}images/logo-hypnos.png`}/></a>
         </Wrapper>
     );
 };

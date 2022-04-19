@@ -24,7 +24,7 @@ export default function Reservation() {
           <select className='selectItem' type="text" placeholder="selectionner l'Hôtel" autocompete="off" value="{currentHotel.city}" >
             <option value="">{currentHotel.name}</option>
             {hotelData.map(item =>
-              <option value="">{item.name}</option>)}
+              <option value="" key={item.id}>{item.name}</option>)}
           </select>
         </div>
         <div className='reservationItem'>
@@ -32,7 +32,7 @@ export default function Reservation() {
           <select className='selectItem' type="text" placeholder="selectionner la Suite" autocompete="off" value="{currentHotel.city}" >
             <option value="">{currentRoom.name}</option>
               {roomsData.map(data =>
-                <option value="">{data.name}</option>)}
+                <option value="" key={data.id}>{data.name}</option>)}
           </select>
         </div>
         <div className='reservationItem'>

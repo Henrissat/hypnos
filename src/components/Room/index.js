@@ -42,19 +42,19 @@ export default function Room() {
                     <article className="container-infos">
                       <h4>Informations</h4>
                       <div className="informations">
-                        <div className="column-infos"><img src="https://hypnos-hotels.herokuapp.com/images/picto-bed.png" className="picto-room"/>
+                        <div className="column-infos"><img src="/images/picto-bed.png" className="picto-room"/>
                           <h5>{currentRoom.bed} Lit double</h5>
                         </div>
-                        <div className="column-infos"><img src="https://hypnos-hotels.herokuapp.com/images/picto-bed.png" className="picto-room"/>
+                        <div className="column-infos"><img src="/images/picto-size.png" className="picto-room"/>
                           <h5>Taille : {currentRoom.size} m²</h5>
                         </div>
-                        <div className="column-infos"><img src="https://hypnos-hotels.herokuapp.com/images/picto-bed.png" className="picto-room"/>
+                        <div className="column-infos"><img src="/images/picto-bathroom.png" className="picto-room"/>
                           <h5>1 Baignoire</h5>
                         </div>
-                        <div className="column-infos"><img src="https://hypnos-hotels.herokuapp.com/images/picto-bed.png" className="picto-room"/>
+                        <div className="column-infos"><img src="/images/picto-suitcase.png" className="picto-room"/>
                           <h5>{currentRoom.capacity}  Personnes </h5>
                         </div>
-                        <div className="column-infos"><img src="https://hypnos-hotels.herokuapp.com/images/picto-bed.png" className="picto-room"/>
+                        <div className="column-infos"><img src="/images/picto-breakfast.png" className="picto-room"/>
                           <h5>Petit déjeunée {currentRoom.breaksfast}</h5>
                         </div>
                          {/*<h5>{currentRoom.breaksfast && "Petit déjeunée non inclu"}</h5>

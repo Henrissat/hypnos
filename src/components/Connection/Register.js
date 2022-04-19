@@ -2,9 +2,9 @@ import styled from "styled-components";
 import React, { useEffect } from 'react';
 
 
-export default function Login() {
+export default function Account() {
     useEffect(() => {
-        window.location.href = "https://serveur-hypnos.herokuapp.com/login_admin";
+        window.location.href = "http://serveur-hypnos.herokuapp.com/account";
     }, []);
 
     return(

@@ -158,6 +158,17 @@
     margin-bottom: 0.5vh;
 }
 
+.login_link{
+    position: fixed;
+    display: block;
+    top: 2rem;
+    right: 2rem;
+}
+
+.md_picto{
+    width: 3rem;
+}
+
 .bg_bar{
     position: fixed;
     left: 0;

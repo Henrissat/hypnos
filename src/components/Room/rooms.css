@@ -41,7 +41,8 @@ h5{
     margin-right: 5rem;
 }
 .picto-room{
-    width: 30px;
+    width: 40px;
+    opacity: 70%;
 }
 
 .room-infos{
@@ -69,4 +70,12 @@ h5{
 
 .reservation{
 
+}
+
+@media screen and (max-width: 767px){
+    .content-room{
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 2rem;
+    }
 }

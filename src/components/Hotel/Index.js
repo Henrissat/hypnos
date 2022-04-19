@@ -17,11 +17,12 @@ export default function Hotel() {
 
     //Récupérer l'hotels en cours
     const hotelCurrent = useCurrentHotel()
-    //console.log(currentHotel)
 
     //Filtrer Room de mon API en fontion de l'id de l'hotel
     let { slug, id } = useParams()
     const filterIdRooms = roomsData.filter(room => room.hotel === `/api/hotels/${hotelCurrent.id}`) 
+
+    console.log(filterIdRooms)
     
     /*else (value.Hotel === undefined) {
         throw new Error (`une erreur c'est produite`)
@@ -60,7 +61,7 @@ export default function Hotel() {
                                 <img className="picto_cardHypnos-rooms" src={`${urlHotel}images/picto-hypnos.png`}/><br/>
                                 <div style={{padding:"0 2rem"}}>
                                     <p className="suite-txt">SUITE</p>
-                                    <p className="rooms-name">{item.shortDescription}</p>
+                                    <p className="rooms-name">{item.shortdescription}</p>
                                     <p className="rooms-description">{item.description}</p>
                                     <p className="rooms-disponibilite">Seulement {item.nbr} chambres disponibles</p>
                                     <p className="rooms-price">{item.price}/Nuit</p>
