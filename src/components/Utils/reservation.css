@@ -1,0 +1,17 @@
+.selectItem{
+    height: 3rem;
+    background-color: #FFF;
+}
+
+input {
+    height: 3rem;
+}
+
+.labelName{
+    color: #bf912d;
+}
+
+.reservationItem{
+    position: relative;
+    margin-top: 1rem;
+}

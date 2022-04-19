@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { useCurrentHotel } from "../Hotel/room-context";
 import SearchBar from "../Utils/SearchBar";
 import Reservation from "../Utils/Reservation";
 import "./rooms.css";
@@ -15,22 +14,22 @@ export default function Room() {
   //Récupérer Rooms
   const roomItem = useLocation() 
   const currentRoom = roomItem.state.roomItem
+  //Récupérer l'hotels en cours
   const hotelData = useHypnos()
-  const currentHotel = hotelData.filter(({id} )=> id === currentRoom.id)[0]
-
-  //Récupérer l'hotels 
-  const hotelCurrent = useCurrentHotel()
-  console.log(hotelData)
-  console.log(hotelCurrent)
-  console.log(currentHotel)
-
-
+  const currentHotel = hotelData.filter(({ id }) => `/api/hotels/${id}` === currentRoom.hotel)[0]
+  
   return (
     <Wrapper>
             <h1>{currentHotel.title}</h1>
             <img src={`${urlServer}upload/images/hotels/${currentHotel.img_header}`} className="bgHeader"/>
             {/* import de la barre de réservation */}
             <SearchBar />
+            {/* Infos hotel */}
+            <div className="blocInfo-hotel">
+              <p className="blocInfo-name">Hôtel {currentHotel.name} palace</p>
+              <p className="blocInfo-star"><span className="star">{currentHotel.stars}★</span></p>
+              <p className="blocInfo-adress"><img src={`${urlHotel}images/map-point.png`} className="map-point"/>{currentHotel.adress} </p>
+            </div>
             <h2>Suite {currentRoom.title}</h2>
             {/*<div className="galerie-img">
               {GalerieImg.map(index => {
@@ -43,22 +42,22 @@ export default function Room() {
                     <article className="container-infos">
                       <h4>Informations</h4>
                       <div className="informations">
-                        <div className="column-infos"><img src="./images/picto-bed.png" className="picto-room"/>
-                          <h5>1 Lit double</h5>
+                        <div className="column-infos"><img src="https://hypnos-hotels.herokuapp.com/images/picto-bed.png" className="picto-room"/>
+                          <h5>{currentRoom.bed} Lit double</h5>
                         </div>
-                        <div className="column-infos"><img src="./images/picto-bed.png" className="picto-room"/>
-                          <h5>Taille : </h5>
+                        <div className="column-infos"><img src="https://hypnos-hotels.herokuapp.com/images/picto-bed.png" className="picto-room"/>
+                          <h5>Taille : {currentRoom.size} m²</h5>
                         </div>
-                        <div className="column-infos"><img src="./images/picto-bed.png" className="picto-room"/>
-                          <h5>1 baignoire</h5>
+                        <div className="column-infos"><img src="https://hypnos-hotels.herokuapp.com/images/picto-bed.png" className="picto-room"/>
+                          <h5>1 Baignoire</h5>
                         </div>
-                        <div className="column-infos"><img src="./images/picto-bed.png" className="picto-room"/>
-                          <h5>2 personnes </h5>
+                        <div className="column-infos"><img src="https://hypnos-hotels.herokuapp.com/images/picto-bed.png" className="picto-room"/>
+                          <h5>{currentRoom.capacity}  Personnes </h5>
                         </div>
-                        <div className="column-infos"><img src="./images/picto-bed.png" className="picto-room"/>
-                          <h5>petit déjeunée inclus</h5>
+                        <div className="column-infos"><img src="https://hypnos-hotels.herokuapp.com/images/picto-bed.png" className="picto-room"/>
+                          <h5>Petit déjeunée {currentRoom.breaksfast}</h5>
                         </div>
-                         {/*<h5>{currentRoom.breakfast && "Petit déjeunée inclu"}</h5>
+                         {/*<h5>{currentRoom.breaksfast && "Petit déjeunée non inclu"}</h5>
                         <h5>
                         Capacité maximum : {" "}
                         {currentRoom.capacity > 1 ? `${currentRoom.capacity} personne` : `${currentRoom.capacity} persone`
@@ -69,7 +68,7 @@ export default function Room() {
                     <article className="description-room">
                       <h4 className="details-room">Détails</h4>
                       <p>
-                        {currentRoom.description}
+                        {currentRoom.content}
                       </p>
                     </article>
                     <artcle className="extras-room">

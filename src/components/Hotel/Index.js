@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from 'react';
 import { useLocation, useParams, Link } from "react-router-dom";
 import { useRooms } from "./room-context";
 import { useCurrentHotel } from "./room-context";
@@ -13,23 +12,25 @@ export default function Hotel() {
     const roomsData = useRooms()
 
     //Récupérer Hotel en cours
-    const hotelItem = useLocation() 
-    const currentHotel = hotelItem.state.hotelItem
-    //Filtrer Hotel de mon API en fontion de leur id
+    //const hotelItem = useLocation() 
+    //const currentHotel = hotelItem.state.hotelItem
+
+    //Récupérer l'hotels en cours
+    const hotelCurrent = useCurrentHotel()
+    //console.log(currentHotel)
+
+    //Filtrer Room de mon API en fontion de l'id de l'hotel
     let { slug, id } = useParams()
-    const filterIdRooms = roomsData.filter(room => room.hotel === `/api/hotels/${currentHotel.id}`) 
- 
+    const filterIdRooms = roomsData.filter(room => room.hotel === `/api/hotels/${hotelCurrent.id}`) 
+    
     /*else (value.Hotel === undefined) {
         throw new Error (`une erreur c'est produite`)
     }*/
 
-    //Récupérer l'hotels 
-    const hotelCurrent = useCurrentHotel()
-
     return(
         <Wrapper>
-            <h1>{currentHotel.title}</h1>
-            <img src={`${urlServer}upload/images/hotels/${currentHotel.img_header}`} className="bgHeader"/>
+            <h1>{hotelCurrent.title}</h1>
+            <img src={`${urlServer}upload/images/hotels/${hotelCurrent.img_header}`} className="bgHeader"/>
             {/* import de la barre de réservation */}
             <SearchBar />
             <div className="container-home">
@@ -44,9 +45,9 @@ export default function Hotel() {
                 </MenuSecond>
                 {/* Infos hotel */}
                 <div className="blocInfo-hotel">
-                    <p className="blocInfo-name">Hôtel {currentHotel.name} palace</p>
-                    <p className="blocInfo-star"><span className="star">{currentHotel.stars}★</span></p>
-                    <p className="blocInfo-adress"><img src={`${urlHotel}images/map-point.png`} className="map-point"/>{currentHotel.adress} </p>
+                    <p className="blocInfo-name">Hôtel {hotelCurrent.name} palace</p>
+                    <p className="blocInfo-star"><span className="star">{hotelCurrent.stars}★</span></p>
+                    <p className="blocInfo-adress"><img src={`${urlHotel}images/map-point.png`} className="map-point"/>{hotelCurrent.adress} </p>
                 </div>
                 <h2>Nos chambres</h2>
                 {/* création dynamique de la liste des chambres */}
@@ -77,7 +78,7 @@ export default function Hotel() {
                 <div className="container-apropos">
                     <Apropos className="content-apropos"></Apropos>
                     <div className="container-bienvenue">
-                            <h3>Bienvenue à {currentHotel.name}</h3>
+                            <h3>Bienvenue à {hotelCurrent.name}</h3>
                             <img className="arabesque" src={`${urlHotel}images/arabesque.png`} />
                             <p>Hypnos est un groupe hôtelier fondé en 2004. Propriétaire de 7 établissements dans les quatre coins de l’hexagone, chacun de ces hôtels s’avère être une destination idéale pour les couples en quête d’un séjour romantique à deux.
                             <br/>Chaque suite au design luxueux inclut des services hauts de gamme (un spa privatif notamment), de quoi plonger pleinement dans une atmosphère chic-romantique.</p>
