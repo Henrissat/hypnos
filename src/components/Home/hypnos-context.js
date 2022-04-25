@@ -4,7 +4,7 @@ const HypnosContext = React.createContext()
 
 const HypnosProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
-    const urlServer = "http://serveur-hypnos.herokuapp.com/";
+    const urlServer = "https://serveur-hypnos.herokuapp.com/";
     const ListHotels = `${urlServer}api/hotels`;
     const [cardHotel, setCardHotel] = useState([]);
     // récupération du fichier au format json
