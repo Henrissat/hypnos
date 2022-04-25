@@ -5,7 +5,7 @@ const RoomsContext = React.createContext()
 
 const RoomsProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
-    const urlServer = 'https://serveur-hypnos.herokuapp.com/';
+    const urlServer = 'http://serveur-hypnos.herokuapp.com/';
     const ListRooms = `${urlServer}api/rooms`;
     const [cardRooms, setCardRooms] = useState([]);
     // création du fichier json
