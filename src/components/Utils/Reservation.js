@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components";
 import "./reservation.css";
 import { useLocation } from "react-router-dom";
@@ -14,7 +14,17 @@ export default function Reservation() {
 
   const roomsData = useRooms()
   console.log(roomsData)
+/*
+  const [date, setDate] = useState(
 
+  )
+  const arrivalDate = new Date ({arrival});
+  const departureDate = new Date ({departure});
+
+  if (departureDate < arrivalDate){
+    alert ("votre date de départ est antérieur à votre date de départ, merci de choisir une autre date")
+  }
+*/
   return (
     <Wrapper>
       <h4>Reservation</h4>
@@ -64,6 +74,7 @@ export default function Reservation() {
     </Wrapper>
   )
 }
+
 
 const Wrapper = styled.div`
     width: 100%;
