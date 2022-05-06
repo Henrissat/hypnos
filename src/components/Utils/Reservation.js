@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components";
 import "./reservation.css";
 import { useLocation } from "react-router-dom";
@@ -13,25 +13,44 @@ export default function Reservation() {
   const currentHotel = hotelData.filter(({ id }) => `/api/hotels/${id}` === currentRoom.hotel)[0]
 
   const roomsData = useRooms()
-  console.log(roomsData)
-/*
-  const [date, setDate] = useState(
 
-  )
-  const arrivalDate = new Date ({arrival});
-  const departureDate = new Date ({departure});
+  //date du jour
+  let currentDate = new Date().toISOString().slice(0, 10)
+ 
+  //Sélectionner la date sélectionner dans le calendrier avec onChange
+  const [dateArrival, setDateArrival] = useState();
+  const [dateDeparture, setDateDeparture] = useState();
+  const onChangeArrival = (e) => {
+    const newArrival = e.target.value
+    setDateArrival(newArrival)
 
-  if (departureDate < arrivalDate){
-    alert ("votre date de départ est antérieur à votre date de départ, merci de choisir une autre date")
   }
-*/
+  const onChangeDeparture = (e) => {
+    const newDeparture = e.target.value
+    setDateDeparture(newDeparture)
+
+  }
+  //condition la date de départ plus récent que date d'arriver
+  if (dateArrival > dateDeparture)
+    {
+      alert("Votre date d'arrivée ne peux pas être plus récente que votre date de départ");
+      //dateDeparture.innerHTML = "";
+    }
+    else
+    {
+    }
+  
+    console.log(dateArrival)
+    console.log(dateDeparture)
+
+
   return (
     <Wrapper>
       <h4>Reservation</h4>
       <form>
         <div className='reservationItem'>
           <label className='labelName'>Hôtel Hypnos</label>
-          <select className='selectItem' type="text" placeholder="selectionner l'Hôtel" autocompete="off" value="{currentHotel.city}" >
+          <select className='selectItem' type="text" placeholder="selectionner l'Hôtel" autocompete="off" value="{currentHotel.city}" required>
             <option value="">{currentHotel.name}</option>
             {hotelData.map(item =>
               <option value="" key={item.id}>{item.name}</option>)}
@@ -39,7 +58,7 @@ export default function Reservation() {
         </div>
         <div className='reservationItem'>
           <label className='labelName'>Suite</label>
-          <select className='selectItem' type="text" placeholder="selectionner la Suite" autocompete="off" value="{currentHotel.city}" >
+          <select className='selectItem' type="text" placeholder="selectionner la Suite" autocompete="off" value="{currentHotel.city}" required>
             <option value="">{currentRoom.name}</option>
               {roomsData.map(data =>
                 <option value="" key={data.id}>{data.name}</option>)}
@@ -51,11 +70,13 @@ export default function Reservation() {
             placeholder="selectionner Dates de d'arrivée" 
             autocompete="off" 
             pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" 
+            min={currentDate}
             title="yyyy-mm-dd" 
-            name="arrival" 
-            //onChange="handlearrival"
-            >
-          </input>
+            name="arrival"
+            id="arrival" 
+            onChange={onChangeArrival}
+            required
+            />
         </div>
         <div className='reservationItem'>
           <label className='labelName' for="date">Date de départ</label>
@@ -63,9 +84,12 @@ export default function Reservation() {
             placeholder="selectionner Dates de départ" 
             autocompete="off" 
             pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" 
+            min={currentDate}
             title="yyyy-mm-dd" 
             name="departure" 
-            //onChange="handlearrival"
+            id="departure" 
+            onChange={onChangeDeparture}
+            required
             >
           </input>
         </div>
