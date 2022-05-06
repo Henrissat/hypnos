@@ -9,23 +9,36 @@ export default function SearchBar() {
     const ListHotels = `http://127.0.0.1/api/hotels.json`
 
     const hotelData = useHypnos()
- 
-    /*state = {value: ""}
 
-    handledeparture = handledeparture.bind(value)
-    handleSubmit = handleSubmit.bind(value)
+    //date du jour
+    let currentDate = new Date().toISOString().slice(0, 10)
 
-    handleChange() { 
-        setState({value: target.value});  
+    //Sélectionner la date sélectionner dans le calendrier avec onChange
+    const [dateArrival, setDateArrival] = useState();
+    const [dateDeparture, setDateDeparture] = useState(); 
+    const onChangeArrival = (e) => {
+      const newArrival = e.target.value
+      setDateArrival(newArrival)
+  
     }
-
-    handleSubmit() {
-        preventDefault();
-      }    
-    */
+    const onChangeDeparture = (e) => {
+      const newDeparture = e.target.value
+      setDateDeparture(newDeparture)
+  
+    }
+    //condition la date de départ plus récent que date d'arriver
+    if (dateArrival > dateDeparture)
+      {
+        alert("Votre date d'arrivée ne peux pas être plus récente que votre date de départ");
+        //dateDeparture.innerHTML = "";
+      }
+      else
+      {
+      }
+ 
     return(
         <form className="search-bar">
-            <select className="destination-search" placeholder="Sélectionner une destination">
+            <select className="destination-search" placeholder="Sélectionner une destination" >
                 { hotelData.map(destination =>
                     <option value={destination.name} selected key={destination.id}>{destination.name}</option> 
                     )}
@@ -36,8 +49,10 @@ export default function SearchBar() {
                     placeholder="selectionner arrivée" 
                     pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" 
                     title="yyyy-mm-dd" 
+                    min={currentDate}
                     name="arrival" 
-                    //onChange="handlearrival"
+                    onChange={onChangeArrival}
+                    required
                     />
             </div>
             <div class="hotel-date-end search-date">
@@ -46,8 +61,10 @@ export default function SearchBar() {
                     placeholder="selectionner départ" 
                     pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" 
                     title="yyyy-mm-dd" 
+                    min={currentDate}
                     name="departure" 
-                    //onChange="handledeparture"
+                    onChange={onChangeDeparture}
+                    required
             />
             </div>
             <button type="submit" value="Réserver" className="btn_travelSearch">
