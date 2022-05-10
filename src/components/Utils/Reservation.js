@@ -39,9 +39,6 @@ export default function Reservation() {
     else
     {
     }
-  
-    console.log(dateArrival)
-    console.log(dateDeparture)
 
 
   return (
