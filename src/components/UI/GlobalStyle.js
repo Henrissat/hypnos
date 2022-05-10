@@ -29,6 +29,17 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
 
     }
+    @media screen and (max-width: 767px){
+        h1{
+            font-size: 3rem;
+        }
+        h2{
+            font-size: 2.8rem;
+        }
+        h3{
+            font-size: 2.3rem;
+        }
+    }
 `;
 
 export default GlobalStyle;

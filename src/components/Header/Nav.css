@@ -202,5 +202,16 @@
     .navbar_links{
         margin-left: 0;
     }
+    .sm_navbar{
+        bottom: 2rem;
+        left: 10px;
+    }
+    .md_picto{
+        width: 2.2rem;
+    }
+    .login_link{
+        top: 0.7rem;
+        right: 0.7rem;
+    }
 
 }

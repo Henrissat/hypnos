@@ -170,4 +170,9 @@ figcaption{
     left: 0;
   }
 
+  .bloc-left{
+    display:flex;
+  }
+  
+
 }

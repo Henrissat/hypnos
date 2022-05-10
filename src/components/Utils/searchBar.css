@@ -25,6 +25,7 @@
     height: 53px;
     font-size: 1.1rem;
     cursor: pointer;
+    background-color: #FFF;
   }
   
   .btn_travelSearch{
@@ -49,7 +50,7 @@
     .search-bar{
       flex-direction: column;
       height: 212px;
-      width: 70vw;
+      width: 100%;
     }
     .destination-search{
       width: 100%;

@@ -156,4 +156,7 @@
     .list-menuSecond{
         flex-direction: column;
     }
+    .bloc-left{
+        display:flex;
+      }
 }
