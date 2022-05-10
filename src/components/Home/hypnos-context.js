@@ -3,9 +3,10 @@ import React, { useState, useEffect,  useContext } from 'react'
 const HypnosContext = React.createContext()
 
 const HypnosProvider = ({ children }) => {
+    /*
     const cors = function (req, res){
         res.setheader('Access-Control-Allow-origin', '*')
-    }
+    }*/
     const [isLoading, setIsLoading] = useState(true);
     const urlServer = "https://serveur-hypnos.herokuapp.com/";
     const ListHotels = `${urlServer}api/hotels`;
