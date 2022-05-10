@@ -7,7 +7,7 @@ import './Nav.css'
 
 export default function NavBar() {
     const urlHotel = "https://hypnos-hotels.herokuapp.com/";
-    const ListHotels = `http://localhost:3000/images/hotels.json`
+    //const ListHotels = `http://localhost:3000/images/hotels.json`
 
     //Récupérer les hotels
     const hotelData = useHypnos()

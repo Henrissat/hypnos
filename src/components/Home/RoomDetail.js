@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import React, { useState, useEffect, useContext } from 'react';
-import { Link, useParams} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 import "./Home.css"
 //import listHotel from "./ListHotel";
 import SearchBar from "../Utils/SearchBar"
 
 function RoomDetail({ match }) {
-    const ListRooms = `http://localhost:3000/images/rooms.json`
+    /*
+    //const ListRooms = `http://localhost:3000/images/rooms.json`
     const [cardHotel, setCardHotel] = useState({});
     // récupération du fichier au format json
     useEffect(() => {
@@ -18,7 +18,7 @@ function RoomDetail({ match }) {
         const item = await fetchHotel.json()
 
         console.log(item)
-    } 
+    } */
 
     return(
         <Wrapper>
