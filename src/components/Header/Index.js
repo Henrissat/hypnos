@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link, useLocation } from 'react-router-dom';
 import NavBar from './NavBar'
 import "./Header.css"
 

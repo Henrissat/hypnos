@@ -39,6 +39,9 @@ export default function Reservation() {
     else
     {
     }
+  
+    console.log(dateArrival)
+    console.log(dateDeparture)
 
 
   return (
@@ -95,7 +98,6 @@ export default function Reservation() {
     </Wrapper>
   )
 }
-
 
 const Wrapper = styled.div`
     width: 100%;

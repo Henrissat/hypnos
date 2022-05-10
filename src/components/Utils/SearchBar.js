@@ -1,12 +1,12 @@
 import React from 'react'
 import "./searchBar.css"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useHypnos } from "../Home/hypnos-context";
 //import listHotel from "../Home/ListHotel";
 
 export default function SearchBar() {
     const urlHotel = "https://hypnos-hotels.herokuapp.com/";
-    const ListHotels = `http://127.0.0.1/api/hotels.json`
+    //const ListHotels = `http://127.0.0.1/api/hotels.json`
 
     const hotelData = useHypnos()
 

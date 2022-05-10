@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { Component, useState } from "react";
+import React from "react";
 import "./contact.css";
 
 export default function Contact() {
