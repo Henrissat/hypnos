@@ -8,7 +8,7 @@ import SearchBar from "../Utils/SearchBar";
 export default function Hotel() {
     //const [isLoading, setIsLoading] = useState(true);
     const urlServer = "https://serveur-hypnos.herokuapp.com/";
-    const urlHotel = "https://hypnos-hotels.herokuapp.com/";
+    const urlHotel = "https://hypnos.netlify.app/";
     const roomsData = useRooms()
 
     //Récupérer Hotel en cours

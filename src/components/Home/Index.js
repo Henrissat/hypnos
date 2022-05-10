@@ -8,7 +8,7 @@ import SearchBar from "../Utils/SearchBar"
 
 export default function Home() {
     //const [isLoading, setIsLoading] = useState(true);
-    const urlHotel = "https://hypnos-hotels.herokuapp.com/";
+    const urlHotel = "https://hypnos.netlify.app/";
     const urlServer = "https://serveur-hypnos.herokuapp.com/";
     //const ListHotels = `http://127.0.0.1/api/hotels.json`;
 

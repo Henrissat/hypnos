@@ -6,7 +6,7 @@ import './Nav.css'
 
 
 export default function NavBar() {
-    const urlHotel = "https://hypnos-hotels.herokuapp.com/";
+    const urlHotel = "https://hypnos.netlify.app/";
     //const ListHotels = `http://localhost:3000/images/hotels.json`
 
     //Récupérer les hotels

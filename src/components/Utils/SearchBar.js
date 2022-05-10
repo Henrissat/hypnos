@@ -5,7 +5,7 @@ import { useHypnos } from "../Home/hypnos-context";
 //import listHotel from "../Home/ListHotel";
 
 export default function SearchBar() {
-    const urlHotel = "https://hypnos-hotels.herokuapp.com/";
+    const urlHotel = "https://hypnos.netlify.app/";
     //const ListHotels = `http://127.0.0.1/api/hotels.json`
 
     const hotelData = useHypnos()

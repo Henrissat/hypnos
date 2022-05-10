@@ -4,7 +4,7 @@ import "./Header.css"
 
 export default function Header() {
     //const location = useLocation();
-    const urlHotel = "https://hypnos-hotels.herokuapp.com/";
+    const urlHotel = "https://hypnos.netlify.app/";
 
 
     return(

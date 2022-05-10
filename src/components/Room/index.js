@@ -9,7 +9,7 @@ import { useHypnos } from "../Home/hypnos-context";
 
 export default function Room() {
   const urlServer = "https://serveur-hypnos.herokuapp.com/";
-  const urlHotel = "https://hypnos-hotels.herokuapp.com/";
+  const urlHotel = "https://hypnos.netlify.app/";
 
   //Récupérer Rooms
   const roomItem = useLocation() 

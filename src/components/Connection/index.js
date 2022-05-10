@@ -7,7 +7,7 @@ import "./Connection.css";
 
 
 export default function Connection() {
-    const urlHotel = "https://hypnos-hotels.herokuapp.com/";
+    const urlHotel = "https://hypnos.netlify.app/";
 
     return (
         <Wrapper>
