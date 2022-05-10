@@ -6,7 +6,7 @@ import Hotel from "./components/Hotel/Index";
 import Room from "./components/Room/index";
 import Reservation from "./components/Reservation/Index";
 import Contact from "./components/Contact/Index";
-import Connection from "./components/Connection/index";
+import Connection from "./components/Connection/Index";
 import Register from "./components/Connection/Register";
 import LoginUser from "./components/Connection/LoginUser";
 

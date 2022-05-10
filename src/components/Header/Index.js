@@ -6,7 +6,6 @@ export default function Header() {
     //const location = useLocation();
     const urlHotel = "https://hypnos.netlify.app/";
 
-
     return(
         <Wrapper>
             <NavBar />

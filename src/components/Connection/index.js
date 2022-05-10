@@ -1,14 +1,8 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import "../Home/Home.css";
 import "./Connection.css";
 
-
-
-
 export default function Connection() {
-    const urlHotel = "https://hypnos.netlify.app/";
-
     return (
         <Wrapper>
                 <div className="block_login">
