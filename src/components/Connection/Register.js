@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 
 export default function Account() {
     useEffect(() => {
-        window.location.href = "http://serveur-hypnos.herokuapp.com/account";
+        window.location.href = "https://serveur-hypnos.herokuapp.com/account";
     }, []);
 
     return(
