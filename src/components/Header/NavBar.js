@@ -31,9 +31,10 @@ export default function NavBar() {
             <button className='navbar_burger' onClick={handleOpenNav}>
                 <span className='burger_bar'></span>
             </button>
+            <div className='txt_menu'>MENU</div>
             <ul className={isShow?"navbar_links show_links":"navbar_links"}>
                 <li>
-                    <img className="logo-nav" src={`${urlHotel}images/picto-hypnos.png`}/>
+                    <Link to="/"><img className="logo-nav" src={`${urlHotel}images/picto-hypnos.png`} /></Link>
                 </li>
                 <li className="navbar_item slideEffect-1">
                     <a href="/" className="navbar_link">Accueil</a>
@@ -52,6 +53,7 @@ export default function NavBar() {
                 <li className="navbar_item slideEffect-10">
                     <a href="/" className="navbar_link">Spa</a>
                 </li>
+                <li className='navbar_item slideEffect-11'><Link to="/Contact" className='button_ct_dark'>Contactez-nous</Link></li>
             </ul>
             <span className='bg_bar'>
                 <a className='login_link' href="/Connection"><img className="md_picto" src={`images/login.png`}/></a>

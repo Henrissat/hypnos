@@ -6,9 +6,9 @@ export default function Connection() {
     return (
         <Wrapper>
                 <div className="block_login">
-                    <Register><a href="/Register" className="linkLogin">Créer un compte</a></Register>
-                    
+                    <Register><a href="/Register" className="linkLogin">Créer un compte</a></Register> 
                     <Login><a href="/LoginUser" className="linkLogin">Je suis déjà inscrit</a></Login>
+                    <Logout><a href="/Logout" className="linkLogin">Me déconnecter</a></Logout>
                 </div>
             
         </Wrapper>
@@ -28,5 +28,10 @@ const Register = styled.div`
 `;
 
 const Login = styled.div`
+    position: relative;
+    margin: 2rem;
+`;
+
+const Logout = styled.div`
     position: relative;
 `;

@@ -146,6 +146,17 @@
     border: none;
     border-radius: 20px 0 20px 0;
     cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.button:hover{
+    background-color: #292726;
+    color: #FFF;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 /*.content-apropos{

@@ -3,36 +3,44 @@ import React from "react";
 import "./contact.css";
 
 export default function Contact() {
+    const urlHotel = "https://hypnos.netlify.app/";
+
     return(
         <Wrapper>
             <HeaderBack />
             <h1>Contact</h1>
+            <img src={`${urlHotel}/images/chandelier-g6f5a69dd7_1920.jpg`} className="bgHeader"/>
             <div className="forms-container">
-                <form name="contact" method="POST" data-netlify="true" className="form-contact">
-                    <div className="infos-cantin">
+                <form name="contact" method="POST" data-netlify="true" onSubmit="submint" className="form-contact">
+                    <div className="infos-cantin" style={{marginTop: '2rem'}}>
                         <a href="tel:+33650122859">06 50 12 28 59</a><br/>
-                        <a href="mailto:">hypnos@gmail.com</a>
+                        <a href="mailto:hypnos-hotel@gmail.com">hypnos@gmail.com</a>
                         <p className="txt-contact"><span>Un projet de prise de vue, une demande de devis personnalisé ?</span><br/><span> Vous avez reçu un bon cadeau et souhaitez prendre RDV.
     Vous pouvez m'envoyer un message directement sur WhatsApp, via Instagram ou par le formulaire ci-dessous.</span><br/><span>
     Je vous réponds généralement en moins de 24h.</span></p>
                     </div>
+                    <input type="hidden" name="form-name" value="contact" />
                     <p>
-                        <label>Nom</label><br/><input type="text" name="name" />
+                        <label for="name">Nom</label><br/>
+                        <input type="text" name="Nom" />
                     </p>
                     <p>
-                        <label>Email</label><br/><input type="email" name="email" />
+                        <label for="email">Email</label><br/>
+                        <input type="email" name="email" />
                     </p>
                     <p>
-                        <label>Role</label><br/><select name="role[]" multiple>
-                        <option value="customer">Client</option>
-                        <option value="follower">Réservation</option>
+                        <label for="role[]">Role</label><br/>
+                        <select name="role[]" multiple>
+                            <option value="customer">Client</option>
+                            <option value="follower">Réservation</option>
                         </select>
                     </p>
                     <p>
-                        <label>Message</label><br/><textarea name="message"></textarea>
+                        <label for="message">Message</label><br/>
+                        <textarea name="message"></textarea>
                     </p>
                     <p>
-                        <button type="submit">Envoyer</button>
+                        <button className="button" type="submit">Envoyer</button>
                     </p>
                 </form>
             </div>
@@ -41,7 +49,6 @@ export default function Contact() {
 }
 
 const Wrapper = styled.div`
-    margin-top: 80px;
     width: 100%;
 `;
 

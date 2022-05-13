@@ -9,6 +9,7 @@ import Contact from "./components/Contact/Index";
 import Connection from "./components/Connection/index";
 import Register from "./components/Connection/Register";
 import LoginUser from "./components/Connection/LoginUser";
+import Logout from "./components/Connection/Logout";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
               <Route element={<Connection />} path="/Connection"></Route>
               <Route element={<Register />} path="/Register"></Route>
               <Route element={<LoginUser />} path="/LoginUser"></Route>
+              <Route element={<Logout />} path="/Logout"></Route>
               <Route element={Error} />
             </Routes>
           </Layout>
