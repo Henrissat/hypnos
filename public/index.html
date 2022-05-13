@@ -31,11 +31,14 @@
     <!-- A little help for the Netlify post-processing bots -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
       <input type="text" name="Nom" />
+      <input type="text" name="Prénom" />
       <input type="email" name="email" />
       <select name="role[]" multiple>
-        <option value="customer">Client</option>
-        <option value="follower">Réservation</option>
-       </select>
+        <option value="customer">Je souhaite poser une réclamation</option>
+        <option value="follower">Je souhaite commander un service supplémentaire</option>
+        <option value="follower">Je souhaite en savoir plus sur une suite</option>
+        <option value="follower">J’ai un souci avec cette application</option>
+      </select>
       <textarea name="message"></textarea>
     </form>
     <noscript>You need to enable JavaScript to run this app.</noscript>

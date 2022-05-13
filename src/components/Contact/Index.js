@@ -25,14 +25,20 @@ export default function Contact() {
                         <input type="text" name="Nom" />
                     </p>
                     <p>
+                        <label for="name">Prénom</label><br/>
+                        <input type="text" name="Prénom" />
+                    </p>
+                    <p>
                         <label for="email">Email</label><br/>
                         <input type="email" name="email" />
                     </p>
                     <p>
-                        <label for="role[]">Role</label><br/>
+                        <label for="role[]">Votre demande concerne :</label><br/>
                         <select name="role[]" multiple>
-                            <option value="customer">Client</option>
-                            <option value="follower">Réservation</option>
+                            <option value="customer">Je souhaite poser une réclamation</option>
+                            <option value="follower">Je souhaite commander un service supplémentaire</option>
+                            <option value="follower">Je souhaite en savoir plus sur une suite</option>
+                            <option value="follower">J’ai un souci avec cette application</option>
                         </select>
                     </p>
                     <p>
