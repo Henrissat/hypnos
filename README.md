@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+# Groupe hôtelier Hypnos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dans le cadre de l'ECF - Studi 2022 - Mathieu Henrissat
+***
+Hypnos est un groupe hôtelier fondé en 2004. Propriétaire de 7 établissements dans les quatre coins de l’hexagone, chacun de ces hôtels s’avère être une destination idéale pour les couples en quête d’un séjour romantique à deux.
 
-## Available Scripts
+Chaque suite au design luxueux inclut des services hauts de gamme (un spa privatif notamment), de quoi plonger pleinement dans une atmosphère chic-romantique.
 
-In the project directory, you can run:
+Hypnos souhaiterait ne pas dépendre uniquement de sites tiers comme Booking.com pour la location de ses chambres. C’est pourquoi le groupe hôtelier aimerait être pourvu de son propre système de réservation sur un nouveau site web.
 
-### `npm start`
+Information importante : Le paiement n'est pas une fonctionnalité à envisager, car il se fait obligatoirement sur place.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+***
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Sommaire
+1. [Mon projet](#mon-projet)
+    - [Développer la partie front-end](#développer-la-partie-front-end)
+    - [Développer la partie back-end](#développer-la-partie-back-end)
+2. [Installation](#installation)
+    - [Initialiser le projet front](#initialiser-le-projet-front)
+    - [Initialiser le projet back](#initialiser-le-projet-back)
+3. [Technologies](#technologies)
 
-### `npm test`
+***
+## Mon projet
+Vous pouvez retrouver mon projet a l'adresse suivante : https://hypnos.netlify.app/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Pour un soucis de sécurité, les routes des admins ne seront pas fournis au public.
 
-### `npm run build`
+### Mes objectifs :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Développer la partie front-end
+1. Maquetter une application
+2. Réaliser une interface utilisateur web statique et adaptable
+3. Développer une interface utilisateur web dynamique
+4. Réaliser une interface utilisateur avec une solution de gestion de contenu ou e-commerce
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Développer la partie back-end
+1. Créer une base de données
+2. Développer les composants d’accès aux données
+3. Développer la partie back-end d’une application web ou web mobile
+4. Élaborer et mettre en oeuvre des composants dans une application de gestion de contenu ou e-commerce
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+***
+## Installation
+Certains prérequis seront nécéssaire pour un bon démarrage du projet, il vous faudra :
 
-### `npm run eject`
+- Xampp / Wampp
+- Un serveur : Apache2
+- php : v8.x fortement conseillé
+- composer
+- symfony cli
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Initialiser le projet front
+Pour initiliser le projet il vous faut vous diriger dans mon repositrory github https://github.com/Henrissat/hypnos pour la partie front du projet. Vérifier que vous êtes bien sur la branch principal "master" et cliquer sur le bouton Code situé en haut à droite, puis "Download ZIP".
+Dezipper le project sur votre machine.
+Ou vous pouvez directement utiliser dans votre terminal la commande :
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone https://github.com/Henrissat/hypnos 
+```
+Lancer Xammp ou wamp ou tout autre serveur local. Depuis votre logiciel VsCode ou équivalent mettez vous dans le dossier Hypnos 
+```bash
+cd hypnos
+```
+Puis lancer la commande :
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Initialiser le projet back
+Pour initialiser la partie backend il vous faut vous dirigiger dans mon repositrory github https://github.com/Henrissat/server-hypnos pour la partie front du projet. Vérifier que vous êtes bien sur la branch principal "master" et cliquer sur le bouton Code situé en haut à droite, puis "Download ZIP".
+Dezipper le project sur votre machine dans le dossier "apps" de xampp.
+Merci de bien vérifier vos paramètre de votre fichier "httpd-vhosts.conf" dans le répertoire xampp\apache\conf\extra\
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+exemple :
+```
+<VirtualHost *:80>
+    ServerName server-hypnos.localhost
 
-## Learn More
+    DocumentRoot "C:/xampp/apps/server-hypnos/public"
+    DirectoryIndex index.php
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    <Directory "C:/xampp/apps/server-hypnos/public">
+        Require all granted
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        FallbackResource /index.php
+    </Directory>
+</VirtualHost>
+```
+Lancer Xammp (ou wamp ou tout autre serveur local). Vérifier de bien avoir toutes les dépendences requises pour le projet. Pour se faire taper dans votre terminal à la racine du projet : 
+```bash
+composer install
+npm install
+npm run build
+``` 
+Mettez le fichier .env en local et paramétrer votre db comme vous le souhaitez : 
+```bash
+ DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.7&charset=utf8mb4"
+```
+Vous Pourrez créer votre premier Admin en allant 
 
-### Code Splitting
+***
+## Technologies
+Le projet en cours de développement, merci de votre compréhension. Version stable actuellement en ligne. les améliorations prévues concernant le stockage des images sur AWS ou Cloudinary, la réservation des chambres avec les disponibilités..
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Front-end
+- ReactJS
+- HTML 5
+- CSS 3
+- Bootstrap 5
+- Javascript
+- Netlify serveur
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Back-end
+- Symfony (maker)
+- Php 8 (composer, nodeJs, npm)
+- MySQL
+- Heroku serveur (JawsDB)
